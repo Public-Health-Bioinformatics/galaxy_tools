@@ -1,0 +1,2 @@
+#FILE	SEQUENCE	START	END	STRAND	GENE	COVERAGE	COVERAGE_MAP	GAPS	%COVERAGE	%IDENTITY	DATABASE	ACCESSION	PRODUCT	RESISTANCE
+SAMN13042171.fasta	contig00063	2498	3310	-	NDM-1	1-813/813	===============	0/0	100.00	100.00	card	FN396876:2407-3220	NDM-1 is a metallo-beta-lactamase isolated from Klebsiella pneumoniae with nearly complete resistance to all beta-lactam antibiotics.	cephalosporin/penam/carbapenem/cephamycin

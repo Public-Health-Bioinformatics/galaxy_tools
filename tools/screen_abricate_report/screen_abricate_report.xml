@@ -23,8 +23,10 @@
     </outputs>
     <tests>
         <test>
-            <param name="abricate_report" value="abricate_report.tsv"/>
-            <param name="screen" value="screen.tsv"/>
+            <param name="screening_file" value="test_entry"/>
+            <param name="abricate_report" value="SAMN13042171_abricate_report.tsv"/>
+	    <output name="screened_report" file="SAMN13042171_abricate_report_screened.tsv" ftype="tabular"/>
+	    <output name="gene_detection_status" file="SAMN13042171_gene_detection_status.tsv" ftype="tabular"/>
         </test>
     </tests>
     <help><![CDATA[
