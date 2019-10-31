@@ -30,7 +30,7 @@ def main(args):
     gene_detection_status_fieldnames = ['gene_name', 'detected']
     with open(args.abricate_report, 'r') as f1, open(args.screened_report, 'w') as f2, open(args.gene_detection_status, 'w') as f3:
         abricate_report_reader = csv.DictReader(f1, delimiter="\t", quotechar='"')
-        screened_report_writer = csv.DictWriter(f2, delimiter="\t", quotechar='"', fieldnames=abricate_report_fieldnames)
+        screened_report_writer = csv.DictWriter(f2, delimiter="\t", quotechar='"', fieldnames=abricate_report_reader.fieldnames)
         gene_detection_status_writer = csv.DictWriter(f3, delimiter="\t", quotechar='"', fieldnames=gene_detection_status_fieldnames)
         screened_report_writer.writeheader()
         gene_detection_status_writer.writeheader()
