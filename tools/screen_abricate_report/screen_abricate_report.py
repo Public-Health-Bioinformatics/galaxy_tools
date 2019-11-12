@@ -3,8 +3,9 @@
 from __future__ import print_function
 
 import argparse
-import re
 import csv
+import re
+
 
 
 def parse_screen_file(screen_file):
@@ -28,8 +29,8 @@ def main(args):
     screen = parse_screen_file(args.screening_file)
     gene_detection_status_fieldnames = ['gene_name', 'detected']
     with open(args.abricate_report, 'r') as f1, \
-         open(args.screened_report, 'w') as f2, \
-         open(args.gene_detection_status, 'w') as f3:
+        open(args.screened_report, 'w') as f2, \
+        open(args.gene_detection_status, 'w') as f3:
         abricate_report_reader = csv.DictReader(f1, delimiter="\t", quotechar='"')
         screened_report_writer = csv.DictWriter(f2, delimiter="\t", quotechar='"',
                                                 fieldnames=abricate_report_reader.fieldnames)
