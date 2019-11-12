@@ -2,7 +2,7 @@ description: 'Pick plasmids containing specific genes'
 long_description: |
   Pick plasmids containing specific genes based on abricate reports
 name: pick_plasmids_containing_genes
-owner: dfornika
-remote_repository_url: https://github.com/dfornika/galaxy/tree/master/tools/pick_plasmids_containing_genes
-homepage_url: https://github.com/dfornika/galaxy/tree/master/tools/pick_plasmids_containing_genes
+owner: public-health-bioinformatics
+remote_repository_url: https://github.com/public-health-bioinformatics/galaxy_tools/tree/master/tools/pick_plasmids_containing_genes
+homepage_url: https://github.com/public-health-bioinformatics/galaxy_tools/tree/master/tools/pick_plasmids_containing_genes
 type: unrestricted
