@@ -3,14 +3,11 @@
 from __future__ import print_function
 
 import argparse
-import errno
 import csv
-import os
+import errno
 import re
 import shutil
-import sys
 
-from pprint import pprint
 
 def parse_screen_file(screen_file):
     screen = []
@@ -19,6 +16,7 @@ def parse_screen_file(screen_file):
         for row in reader:
             screen.append(row)
     return screen
+
 
 def main(args):
     # create output directory
@@ -58,6 +56,7 @@ def main(args):
             if copy_plasmid:
                 print("\t".join([plasmid, "True"]))
                 shutil.copy2(plasmid, args.outdir)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
