@@ -3,11 +3,9 @@
 from __future__ import print_function
 
 import argparse
-import os
 import re
-import sys
 import csv
-from pprint import pprint
+
 
 def parse_screen_file(screen_file):
     screen = []
@@ -17,16 +15,17 @@ def parse_screen_file(screen_file):
             screen.append(row)
     return screen
 
+
 def get_fieldnames(input_file):
     with open(input_file) as f:
         reader = csv.DictReader(f, delimiter="\t", quotechar='"')
         row = next(reader)
     fieldnames = row.keys()
     return fieldnames
-    
+
+
 def main(args):
     screen = parse_screen_file(args.screening_file)
-    abricate_report_fieldnames = get_fieldnames(args.abricate_report)
     gene_detection_status_fieldnames = ['gene_name', 'detected']
     with open(args.abricate_report, 'r') as f1, open(args.screened_report, 'w') as f2, open(args.gene_detection_status, 'w') as f3:
         abricate_report_reader = csv.DictReader(f1, delimiter="\t", quotechar='"')
@@ -45,7 +44,7 @@ def main(args):
                     gene_detection_status['detected'] = True
                     screened_report_writer.writerow(abricate_report_row)
             gene_detection_status_writer.writerow(gene_detection_status)
-            f1.seek(0) # return file pointer to start of abricate report
+            f1.seek(0)  # return file pointer to start of abricate report
 
 
 if __name__ == '__main__':
