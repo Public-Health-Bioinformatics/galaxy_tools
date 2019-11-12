@@ -1,0 +1,50 @@
+<tool id="pick_plasmids_containing_genes" name="Pick plasmids containing genes" version="0.1.0">
+    <description>Pick plasmids containing specific genes</description>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        '$__tool_directory__/pick_plasmids_containing_genes.py'
+        --plasmids
+        #for $plasmid in $plasmids:
+          '${plasmid}'
+        #end for
+        --concatenated_abricate_reports '${concatenated_abricate_reports}'
+        --abricate_report_screening_file '${screening_file.fields.path}'
+        --outdir outdir
+    ]]></command>
+    <inputs>
+        <param name="plasmids" type="data_collection" collection_type="list" format="fasta" />
+        <param name="concatenated_abricate_reports" type="data" format="tabular" />
+        <param name="screening_file" type="select" format="tabular">
+	    <options from_data_table="abricate_report_screening_files">
+	        <validator type="no_options" message="No abricate report screening files are available" />
+            </options>
+	</param>
+    </inputs>
+    <outputs>
+        <collection name="output" type="list" label="Output plasmids">
+            <discover_datasets pattern="__name__" format="fasta" directory="outdir" />
+        </collection>
+    </outputs>
+    <tests>
+        <test>
+	    <param name="plasmids">
+                <collection type="list">
+                    <element name="SRR9113487_plasmid_1068" value="SRR9113487_plasmid_1068.fasta" ftype="fasta" />
+                    <element name="SRR9113487_plasmid_1550" value="SRR9113487_plasmid_1550.fasta" ftype="fasta" />
+                    <element name="SRR9113487_plasmid_2719" value="SRR9113487_plasmid_2719.fasta" ftype="fasta" />
+                    <element name="SRR9113487_plasmid_739" value="SRR9113487_plasmid_739.fasta" ftype="fasta" />
+                    <element name="SRR9113487_plasmid_839" value="SRR9113487_plasmid_839.fasta" ftype="fasta" />
+                    <element name="SRR9113487_plasmid_novel_0" value="SRR9113487_plasmid_novel_0.fasta" ftype="fasta" />
+                </collection>
+            </param>
+            <param name="concatenated_abricate_reports" value="concatenated_abricate_reports.tsv" ftype="tabular"/>
+            <param name="screening_file" value="screening_file_1"/>
+            <output name="output" file="outdir/SRR9113487_plasmid_2719.fasta" ftype="fasta"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
