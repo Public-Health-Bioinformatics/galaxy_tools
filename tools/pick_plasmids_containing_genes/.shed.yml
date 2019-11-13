@@ -1,3 +1,5 @@
+categories:
+  - Sequence Analysis
 description: 'Pick plasmids containing specific genes'
 long_description: |
   Pick plasmids containing specific genes based on abricate reports
