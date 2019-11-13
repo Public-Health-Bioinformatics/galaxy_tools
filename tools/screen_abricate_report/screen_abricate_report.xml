@@ -18,8 +18,8 @@
 	</param>
     </inputs>
     <outputs>
-        <data name="screened_report" type="data" format="tabular" label="Screened Abricate Report" />
-        <data name="gene_detection_status" type="data" format="tabular" label="Gene Detection Status" />
+        <data name="screened_report" format="tabular" label="Screened Abricate Report" />
+        <data name="gene_detection_status" format="tabular" label="Gene Detection Status" />
     </outputs>
     <tests>
         <test>
