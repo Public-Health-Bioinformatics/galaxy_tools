@@ -5,12 +5,9 @@ from __future__ import division, print_function
 import argparse
 import csv
 import errno
-
 import os
 import re
 import shutil
-
-
 
 
 MOB_TYPER_FIELDNAMES = [
