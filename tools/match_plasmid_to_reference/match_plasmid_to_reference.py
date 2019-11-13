@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 
-from __future__ import print_function, division
+from __future__ import division, print_function
 
 import argparse
 import csv
 import errno
-import json
+
 import os
 import re
 import shutil
-import sys
 
-from pprint import pprint
+
+
 
 MOB_TYPER_FIELDNAMES = [
         "file_id",
@@ -56,6 +56,7 @@ def parse_mob_typer_report(mob_typer_report_path):
             mob_typer_report.append(row)
     return mob_typer_report
 
+
 def parse_genbank_accession(genbank_path):
     with open(genbank_path, 'r') as f:
         while True:
@@ -63,12 +64,14 @@ def parse_genbank_accession(genbank_path):
             if line.startswith('ACCESSION'):
                 return line.strip().split()[1]
 
+
 def parse_fasta_accession(fasta_path):
     with open(fasta_path, 'r') as f:
         while True:
             line = f.readline()
             if line.startswith('>'):
                 return line.strip().split()[0][1:]
+
 
 def count_fasta_contigs(fasta_path):
     contigs = 0
@@ -78,6 +81,7 @@ def count_fasta_contigs(fasta_path):
                 contigs += 1
     return contigs
 
+
 def count_fasta_bases(fasta_path):
     bases = 0
     with open(fasta_path, 'r') as f:
@@ -86,6 +90,7 @@ def count_fasta_bases(fasta_path):
             if not line.startswith('>'):
                 bases += len(line)
     return bases
+
 
 def compute_fasta_gc_percent(fasta_path):
     gc_count = 0
@@ -100,6 +105,7 @@ def compute_fasta_gc_percent(fasta_path):
                 gc_count += line_c_count + line_g_count
                 total_bases_count += line_total_bases_count
     return 100 * (gc_count / total_bases_count)
+
 
 def main(args):
 
@@ -117,7 +123,7 @@ def main(args):
     num_plasmid_contigs = count_fasta_contigs(args.plasmid)
     num_plasmid_bases = count_fasta_bases(args.plasmid)
     plasmid_gc_percent = compute_fasta_gc_percent(args.plasmid)
-    
+
     with open(os.path.join(args.outdir, 'mob_typer_record.tsv'), 'w') as f:
         mob_typer_record_writer = csv.DictWriter(f, delimiter="\t", quotechar='"', fieldnames=MOB_TYPER_FIELDNAMES)
         mob_typer_record_writer.writeheader()
