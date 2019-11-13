@@ -5,6 +5,7 @@ from __future__ import print_function
 import argparse
 import csv
 import errno
+import os
 import re
 import shutil
 
@@ -45,7 +46,7 @@ def main(args):
             f.seek(0)
             next(abricate_report_reader)
 
-    # copy the corresponding plasmid fasta files into outdir        
+    # copy the corresponding plasmid fasta files into outdir
     for contig in contigs_with_genes_of_interest:
         for plasmid in args.plasmids:
             copy_plasmid = False
