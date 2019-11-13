@@ -1,0 +1,6 @@
+# Tab separated with three columns:
+# - value (Galaxy records this in the Galaxy DB)
+# - name (Galaxy shows this in the UI)
+# - path (folder name containing the Kraken DB)
+#
+screening_file_1	"Carbapenemase Genes"	${__HERE__}/abricate_report_screening_file_1.tsv
