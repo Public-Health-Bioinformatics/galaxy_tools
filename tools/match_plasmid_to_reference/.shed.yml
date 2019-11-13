@@ -1,0 +1,10 @@
+categories:
+  - Sequence Analysis
+description: 'Match plasmid to reference genbank based on MOB Typer report'
+long_description: |
+  Match plasmid to reference genbank based on MOB Typer report
+name: match_plasmid_to_reference
+owner: public-health-bioinformatics
+remote_repository_url: https://github.com/public-health-bioinformatics/galaxy_tools/tree/master/tools/match_plasmid_to_reference
+homepage_url: https://github.com/public-health-bioinformatics/galaxy_tools/tree/master/tools/match_plasmid_to_reference
+type: unrestricted
