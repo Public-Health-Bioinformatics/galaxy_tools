@@ -77,7 +77,7 @@ install:
   - pip install planemo
   - planemo conda_init
   - export PATH="$PLANEMO_CONDA_PREFIX/bin:$PATH"
-  - conda install -n base -c defaults conda=4.7.12 
+  - conda install -y -c defaults conda=4.7.12 
   - planemo --version
   - conda --version
   - git diff --quiet "$TRAVIS_COMMIT_RANGE" -- ; GIT_DIFF_EXIT_CODE=$?
