@@ -44,6 +44,7 @@ MOB_TYPER_FIELDNAMES = [
         "LitPMIDsNumber",
 ]
 
+
 def parse_mob_typer_report(mob_typer_report_path):
     mob_typer_report = []
 
@@ -131,7 +132,7 @@ def main(args):
             # 3. G/C percent (within +/-0.1%)
             if num_plasmid_contigs == int(record['num_contigs']) and \
                num_plasmid_bases == int(record['total_length']) and \
-               abs(plasmid_gc_percent - float(record['gc'])) < 0.1: 
+               abs(plasmid_gc_percent - float(record['gc'])) < 0.1:
                 for reference_plasmid in args.reference_plasmids_genbank:
                     if parse_genbank_accession(reference_plasmid) == record['mash_nearest_neighbor']:
                         shutil.copy2(reference_plasmid, os.path.join(args.outdir, "reference_plasmid.gbk"))
