@@ -1,4 +1,4 @@
-<tool id="pick_plasmids_containing_genes" name="Pick plasmids containing genes" version="0.1.0">
+<tool id="pick_plasmids_containing_genes" name="Pick plasmids containing genes" version="0.2.0">
     <description>Pick plasmids containing specific genes</description>
     <requirements>
     </requirements>
@@ -9,22 +9,41 @@
           '${plasmid}'
         #end for
         --concatenated_abricate_reports '${concatenated_abricate_reports}'
-        --abricate_report_screening_file '${screening_file.fields.path}'
-        --outdir outdir
+        #if str( $screening_file_source.screening_file_source_selector ) == "tool_data_table":
+          #set $input_screening_file = str( $screening_file_source.screening_file.fields.path )
+        #else:
+          #set $input_screening_file = str( $screening_file_source.screening_file )
+        #end if
+        --abricate_report_screening_file '${input_screening_file}'
+        --outdir outdir &&
+        cp '${input_screening_file}' '${output_screening_file}'
     ]]></command>
     <inputs>
+        <conditional name="screening_file_source">
+            <param name="screening_file_source_selector" type="select" label="Select a gene screening file from your history or use one from a tool data table?"
+                   help="Screening files must be stored in the 'abricate_report_screening_files' tool data table">
+                <option value="tool_data_table">From tool data table</option>
+                <option value="history">From history</option>
+            </param>
+            <when value="tool_data_table">
+                <param name="screening_file" type="select" format="tabular">
+	            <options from_data_table="abricate_report_screening_files">
+	                <validator type="no_options" message="No abricate report screening files are available" />
+                    </options>
+	        </param>
+            </when>
+            <when value="history">
+                <param name="screening_file" type="data" format="tabular" label="Gene screening file" help="A two-column tab-delimited file with gene names and regular expressions" />
+            </when>
+        </conditional>
         <param name="plasmids" type="data_collection" collection_type="list" format="fasta" />
         <param name="concatenated_abricate_reports" type="data" format="tabular" />
-        <param name="screening_file" type="select" format="tabular">
-	    <options from_data_table="abricate_report_screening_files">
-	        <validator type="no_options" message="No abricate report screening files are available" />
-            </options>
-	</param>
     </inputs>
     <outputs>
-        <collection name="output" type="list" label="Output plasmids">
+        <collection name="output_plasmids" type="list" label="Output plasmids">
             <discover_datasets pattern="__name__" format="fasta" directory="outdir" />
         </collection>
+        <data name="output_screening_file" format="tabular" />
     </outputs>
     <tests>
         <test>
@@ -39,8 +58,25 @@
                 </collection>
             </param>
             <param name="concatenated_abricate_reports" value="concatenated_abricate_reports.tsv" ftype="tabular"/>
-            <param name="screening_file" value="screening_file_1"/>
-            <output file="outdir/SRR9113487_plasmid_2719.fasta" ftype="fasta"/>
+            <param name="screening_file_source.screening_file_source_selector" value="tool_data_table" />
+            <param name="screening_file_source.screening_file" value="screening_file_1"/>
+            <output_collection name="output_plasmids" type="list" count="1" />
+        </test>
+        <test>
+	    <param name="plasmids">
+                <collection type="list">
+                    <element name="SRR9113487_plasmid_1068" value="SRR9113487_plasmid_1068.fasta" ftype="fasta" />
+                    <element name="SRR9113487_plasmid_1550" value="SRR9113487_plasmid_1550.fasta" ftype="fasta" />
+                    <element name="SRR9113487_plasmid_2719" value="SRR9113487_plasmid_2719.fasta" ftype="fasta" />
+                    <element name="SRR9113487_plasmid_739" value="SRR9113487_plasmid_739.fasta" ftype="fasta" />
+                    <element name="SRR9113487_plasmid_839" value="SRR9113487_plasmid_839.fasta" ftype="fasta" />
+                    <element name="SRR9113487_plasmid_novel_0" value="SRR9113487_plasmid_novel_0.fasta" ftype="fasta" />
+                </collection>
+            </param>
+            <param name="concatenated_abricate_reports" value="concatenated_abricate_reports.tsv" ftype="tabular"/>
+            <param name="screening_file_source.screening_file_source_selector" value="history" />
+            <param name="screening_file_source.screening_file" value="abricate_report_screening_file_1.tsv"/>
+            <output_collection name="output_plasmids" type="list" count="1" />
         </test>
     </tests>
     <help><![CDATA[
