@@ -50,13 +50,23 @@
         </test>
         <test>
             <param name="screening_file_source.screening_file_source_selector" value="history" />
-            <param name="screening_file_source.screening_file" file="screening_file.tsv"/>
+            <param name="screening_file_source.screening_file" value="screening_file.tsv"/>
             <param name="abricate_report" value="SAMN13042171_abricate_report.tsv"/>
 	    <output name="screened_report" file="SAMN13042171_abricate_report_screened.tsv" ftype="tabular"/>
 	    <output name="gene_detection_status" file="SAMN13042171_gene_detection_status.tsv" ftype="tabular"/>
         </test>
     </tests>
     <help><![CDATA[
+    This tool is used to filter (ie. 'screen') an abricate report to only include 
+    specific genes of interest. 
+
+    A list of genes is supplied in a 'screening file', which is a two-column .tsv 
+    with headers 'gene_name' and 'regex'. The first column gives the name of the 
+    gene of interest, and the second column is a regular expression that can be used 
+    to identify examples of that gene in the 'GENE' column of the abricate report.
+
+    For example, one might use the regex 'KPC\-{d+}' to identify all alleles of the 
+    KPC gene (KPC-2, KPC-3, KPC-4, ..., KPC-10, ...)
     ]]></help>
     <citations>
     </citations>
