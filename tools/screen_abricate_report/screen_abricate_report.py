@@ -25,7 +25,8 @@ class Range(object):
         yield self
 
     def __repr__(self):
-        return  str(self.start) + " - " + str(self.end)
+        return str(self.start) + " - " + str(self.end)
+
 
 def parse_screen_file(screen_file):
     screen = []
@@ -42,6 +43,7 @@ def get_fieldnames(input_file):
         row = next(reader)
     fieldnames = row.keys()
     return fieldnames
+
 
 def detect_gene(abricate_report_row, regex, min_coverage, min_identity):
     gene_of_interest = bool(re.search(regex, abricate_report_row['GENE']))
@@ -80,11 +82,13 @@ def main(args):
             f1.seek(0)  # return file pointer to start of abricate report
             next(abricate_report_reader)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("abricate_report", help="Input: Abricate report to screen (tsv)")
     parser.add_argument("--screening_file", help="Input: List of genes to screen for (tsv)")
-    parser.add_argument("--screened_report", help=("Output: Screened abricate report, including only genes of interest (tsv)"))
+    parser.add_argument("--screened_report",
+                        help=("Output: Screened abricate report, including only genes of interest (tsv)"))
     parser.add_argument("--gene_detection_status", help=("Output: detection status for all genes listed in the screening file (tsv)"))
     parser.add_argument("--min_coverage", type=float,  default=90.0, choices=Range(0.0, 100.0), help=("Minimum percent coverage"))
     parser.add_argument("--min_identity", type=float, default=90.0, choices=Range(0.0, 100.0), help=("Minimum percent identity"))
