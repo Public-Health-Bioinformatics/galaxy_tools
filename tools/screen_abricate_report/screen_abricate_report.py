@@ -89,8 +89,11 @@ if __name__ == '__main__':
     parser.add_argument("--screening_file", help="Input: List of genes to screen for (tsv)")
     parser.add_argument("--screened_report",
                         help=("Output: Screened abricate report, including only genes of interest (tsv)"))
-    parser.add_argument("--gene_detection_status", help=("Output: detection status for all genes listed in the screening file (tsv)"))
-    parser.add_argument("--min_coverage", type=float,  default=90.0, choices=Range(0.0, 100.0), help=("Minimum percent coverage"))
-    parser.add_argument("--min_identity", type=float, default=90.0, choices=Range(0.0, 100.0), help=("Minimum percent identity"))
+    parser.add_argument("--gene_detection_status",
+                        help=("Output: detection status for all genes listed in the screening file (tsv)"))
+    parser.add_argument("--min_coverage", type=float,  default=90.0,
+                        choices=Range(0.0, 100.0), help=("Minimum percent coverage"))
+    parser.add_argument("--min_identity", type=float, default=90.0,
+                        choices=Range(0.0, 100.0), help=("Minimum percent identity"))
     args = parser.parse_args()
     main(args)
