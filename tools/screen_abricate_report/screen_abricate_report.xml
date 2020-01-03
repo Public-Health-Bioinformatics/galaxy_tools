@@ -1,7 +1,8 @@
-<tool id="screen_abricate_report" name="Screen Abricate Report" version="0.3.0">
+<tool id="screen_abricate_report" name="Screen Abricate Report" version="0.4.0+galaxy0">
     <description>Screens an abricate report for genes of interest</description>
     <requirements>
     </requirements>
+    <version_command><![CDATA[screen_abricate_report.py --version]]></version_command>
     <command detect_errors="exit_code"><![CDATA[
         '${__tool_directory__}/screen_abricate_report.py'
              '${abricate_report}'
@@ -48,16 +49,30 @@
         <test>
             <param name="screening_file_source.screening_file_source_selector" value="tool_data_table" />
             <param name="screening_file_source.screening_file" value="test_entry"/>
-            <param name="abricate_report" value="SAMN13042171_abricate_report.tsv"/>
-	    <output name="screened_report" file="SAMN13042171_abricate_report_screened.tsv" ftype="tabular"/>
-	    <output name="gene_detection_status" file="SAMN13042171_gene_detection_status.tsv" ftype="tabular"/>
+            <param name="abricate_report" value="SAMN13042171-abricate_report_full.tsv"/>
+	    <output name="screened_report" file="SAMN13042171-abricate_report_screened.tsv" ftype="tabular"/>
+	    <output name="gene_detection_status" file="SAMN13042171-gene_detection_status.tsv" ftype="tabular"/>
         </test>
         <test>
             <param name="screening_file_source.screening_file_source_selector" value="history" />
             <param name="screening_file_source.screening_file" value="screening_file.tsv"/>
-            <param name="abricate_report" value="SAMN13042171_abricate_report.tsv"/>
-	    <output name="screened_report" file="SAMN13042171_abricate_report_screened.tsv" ftype="tabular"/>
-	    <output name="gene_detection_status" file="SAMN13042171_gene_detection_status.tsv" ftype="tabular"/>
+            <param name="abricate_report" value="SAMN13042171-abricate_report_full.tsv"/>
+	    <output name="screened_report" file="SAMN13042171-abricate_report_screened.tsv" ftype="tabular"/>
+	    <output name="gene_detection_status" file="SAMN13042171-gene_detection_status.tsv" ftype="tabular"/>
+        </test>
+        <test>
+            <param name="screening_file_source.screening_file_source_selector" value="history" />
+            <param name="screening_file_source.screening_file" value="screening_file.tsv"/>
+            <param name="abricate_report" value="SAMN11840202-abricate_report_full.tsv"/>
+	    <output name="screened_report" file="SAMN11840202-abricate_report_screened.tsv" ftype="tabular"/>
+	    <output name="gene_detection_status" file="SAMN11840202-gene_detection_status.tsv" ftype="tabular"/>
+        </test>
+        <test>
+            <param name="screening_file_source.screening_file_source_selector" value="history" />
+            <param name="screening_file_source.screening_file" value="screening_file.tsv"/>
+            <param name="abricate_report" value="SAMN11840203-abricate_report_full.tsv"/>
+	    <output name="screened_report" file="SAMN11840203-abricate_report_screened.tsv" ftype="tabular"/>
+	    <output name="gene_detection_status" file="SAMN11840203-gene_detection_status.tsv" ftype="tabular"/>
         </test>
     </tests>
     <help><![CDATA[
