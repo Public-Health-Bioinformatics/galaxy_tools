@@ -57,7 +57,7 @@ def detect_gene(abricate_report_row, regex, min_coverage, min_identity):
 
 def main(args):
     screen = parse_screen_file(args.screening_file)
-    gene_detection_status_fieldnames = ['gene_name', 'detected']
+    gene_detection_status_fieldnames = ['gene_name', 'detected', 'alleles']
     with open(args.abricate_report, 'r') as f1, \
             open(args.screened_report, 'w') as f2, \
             open(args.gene_detection_status, 'w') as f3:
@@ -72,11 +72,19 @@ def main(args):
         for gene in screen:
             gene_detection_status = {
                 'gene_name': gene['gene_name'],
-                'detected': False
+                'detected': False,
+                'alleles': None,
             }
             for abricate_report_row in abricate_report_reader:
                 if detect_gene(abricate_report_row, gene['regex'], args.min_coverage, args.min_identity):
                     gene_detection_status['detected'] = True
+                    if not gene_detection_status['alleles']:
+                        gene_detection_status['alleles'] = abricate_report_row['GENE']
+                    else:
+                        gene_detection_status['alleles'] = ",".join([
+                            gene_detection_status['alleles'],
+                            abricate_report_row['GENE'],
+                        ])
                     screened_report_writer.writerow(abricate_report_row)
             gene_detection_status_writer.writerow(gene_detection_status)
             f1.seek(0)  # return file pointer to start of abricate report
@@ -92,8 +100,11 @@ if __name__ == '__main__':
     parser.add_argument("--gene_detection_status",
                         help=("Output: detection status for all genes listed in the screening file (tsv)"))
     parser.add_argument("--min_coverage", type=float,  default=90.0,
-                        choices=Range(0.0, 100.0), help=("Minimum percent coverage"))
+                        choices=Range(0.0, 100.0),
+                        help=("Minimum percent coverage (default 90.0)"))
     parser.add_argument("--min_identity", type=float, default=90.0,
-                        choices=Range(0.0, 100.0), help=("Minimum percent identity"))
+                        choices=Range(0.0, 100.0),
+                        help=("Minimum percent identity (default 90.0)"))
+    parser.add_argument("-v", "--version", action='version', version='%(prog)s 0.4.0')
     args = parser.parse_args()
     main(args)
