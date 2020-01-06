@@ -22,8 +22,6 @@
         <data name="consensus" label="consensus" format="fasta"/>
     </outputs>
     <tests>
-        <test>
-        </test>
     </tests>
     <help><![CDATA[
     ]]></help>
