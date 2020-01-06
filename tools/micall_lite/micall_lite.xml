@@ -1,0 +1,148 @@
+<tool id="micall_lite" name="micall_lite" version="@TOOL_VERSION@+galaxy0">
+    <description></description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <requirements>
+        <requirement type="package" version="@TOOL_VERSION@">micall-lite</requirement>
+    </requirements>
+    <version_command>echo "@TOOL_VERSION@"</version_command>
+    <command detect_errors="exit_code">
+        <![CDATA[
+          #if str( $fastq_input.fastq_input_selector ) == "paired":
+            #if $fastq_input.reads1.is_of_type("fastq.gz", "fastqsanger.gz"):
+              #set unzipped = False
+              #set reads1 = $fastq_input.reads1.element_identifier + '_R1.fastq.gz'
+            #else if $fastq_input.reads1.is_of_type("fastq", "fastqsanger"):
+              #set unzipped = True
+              #set reads1 = $fastq_input.reads1.element_identifier + '_R1.fastq'
+            #end if
+            ln -s '$fastq_input.reads1' '$reads1' &&
+            #if $fastq_input.reads2.is_of_type("fastq.gz", "fastqsanger.gz"):
+              #set unzipped = False
+              #set reads2 = $fastq_input.reads2.element_identifier + '_R2.fastq.gz'
+            #else if $fastq_input.reads2.is_of_type("fastq", "fastqsanger"):
+              #set unzipped = True
+              #set reads2 = $fastq_input.reads2.element_identifier + '_R2.fastq'
+            #end if
+            ln -s '$fastq_input.reads2' '$reads2' &&
+          #else if str( $fastq_input.fastq_input_selector ) == "paired_collection":
+            #if $fastq_input.pair.forward.is_of_type("fastq.gz", "fastqsanger.gz"):
+              #set unzipped = False
+              #set reads1 = $fastq_input.pair.element_identifier + '_R1.fastq.gz'
+            #else if $fastq_input.pair.forward.is_of_type("fastq", "fastqsanger"):
+              #set unzipped = True
+              #set reads1 = $fastq_input.pair.element_identifier + '_R1.fastq'
+            #end if
+            ln -s '$fastq_input.pair.forward' '$reads1' &&
+            #if $fastq_input.pair.reverse.is_of_type("fastq.gz", "fastqsanger.gz"):
+              #set unzipped = False
+              #set reads2 = $fastq_input.pair.element_identifier + '_R2.fastq.gz'
+            #else if $fastq_input.pair.reverse.is_of_type("fastq", "fastqsanger"):
+              #set unzipped = True
+              #set reads2 = $fastq_input.pair.element_identifier + '_R2.fastq'
+            #end if
+            ln -s '$fastq_input.pair.reverse' '$reads2' &&
+          #end if
+          
+          mkdir 'outdir' &&
+          micall
+            --threads \${GALAXY_SLOTS:-1}
+            #if $unzipped:
+              --unzipped
+            #end if
+            --readlen ${readlen}
+            '${reads1}'
+            '${reads2}'
+            --outdir 'outdir'
+        ]]>
+    </command>
+    <inputs>
+        <conditional name="fastq_input">
+            <param name="fastq_input_selector" type="select" label="Paired Reads or Paired Collection" >
+                <option selected="true" value="paired">Paired</option>
+                <option value="paired_collection">Paired Collection</option>
+            </param>
+            <when value="paired">
+                <param format="@INTYPES@" name="reads1" type="data" label="Select first set of reads"/>
+                <param format="@INTYPES@" name="reads2" type="data" label="Select second set of reads"/>
+            </when>
+            <when value="paired_collection">
+                <param format="@INTYPES@" name="pair" type="data_collection" collection_type="paired" label="Collection of paired reads"/>
+            </when>
+        </conditional>
+        <param name="readlen" type="integer" min="1" value="251" max="600" label="Read Length" help="Read Length" />
+    </inputs>
+    <outputs>
+        <data name="align" label="align" format="csv" from_work_dir="outdir/*.align.csv" />
+        <data name="amino" label="amino" format="csv" from_work_dir="outdir/*.amino.csv" />
+        <data name="conseq" label="conseq" format="csv" from_work_dir="outdir/*.conseq.csv" />
+        <data name="insert" label="insert" format="csv" from_work_dir="outdir/*.insert.csv" />
+        <data name="nuc" label="nuc" format="csv" from_work_dir="outdir/*.nuc.csv" />
+    </outputs>
+    <tests>
+        <test>
+            <conditional name="fastq_input">
+                <param name="fastq_input_selector" value="paired"/>
+                <param name="reads1" value="1234A-V3LOOP_S1_L001_R1_001.fastq" />
+                <param name="reads2" value="1234A-V3LOOP_S1_L001_R2_001.fastq" />
+            </conditional>
+            <param name="readlen" value="51" />
+            <output name="align" value="1234A-V3LOOP.align.csv" />
+            <output name="amino" value="1234A-V3LOOP.amino.csv" />
+            <output name="conseq" value="1234A-V3LOOP.conseq.csv" />
+            <output name="insert" value="1234A-V3LOOP.insert.csv" />
+            <output name="nuc" value="1234A-V3LOOP.nuc.csv" />
+        </test>
+        <test>
+            <conditional name="fastq_input">
+                <param name="fastq_input_selector" value="paired"/>
+                <param name="reads1" value="1234A-V3LOOP_S1_L001_R1_001.fastq.gz" />
+                <param name="reads2" value="1234A-V3LOOP_S1_L001_R2_001.fastq.gz" />
+            </conditional>
+            <param name="readlen" value="51" />
+            <output name="align" value="1234A-V3LOOP.align.csv" />
+            <output name="amino" value="1234A-V3LOOP.amino.csv" />
+            <output name="conseq" value="1234A-V3LOOP.conseq.csv" />
+            <output name="insert" value="1234A-V3LOOP.insert.csv" />
+            <output name="nuc" value="1234A-V3LOOP.nuc.csv" />
+        </test>
+        <test>
+            <conditional name="fastq_input">
+                <param name="fastq_input_selector" value="paired_collection" />
+                <param name="pair" >
+                    <collection type="paired">
+                        <element name="forward" value="1234A-V3LOOP_S1_L001_R1_001.fastq" />
+                        <element name="reverse" value="1234A-V3LOOP_S1_L001_R2_001.fastq" />
+                    </collection>
+                </param>
+            </conditional>
+            <param name="readlen" value="51" />
+            <output name="align" value="1234A-V3LOOP.align.csv" />
+            <output name="amino" value="1234A-V3LOOP.amino.csv" />
+            <output name="conseq" value="1234A-V3LOOP.conseq.csv" />
+            <output name="insert" value="1234A-V3LOOP.insert.csv" />
+            <output name="nuc" value="1234A-V3LOOP.nuc.csv" />
+        </test>
+        <test>
+            <conditional name="fastq_input">
+                <param name="fastq_input_selector" value="paired_collection" />
+                <param name="pair" >
+                    <collection type="paired">
+                        <element name="forward" value="1234A-V3LOOP_S1_L001_R1_001.fastq.gz" />
+                        <element name="reverse" value="1234A-V3LOOP_S1_L001_R2_001.fastq.gz" />
+                    </collection>
+                </param>
+            </conditional>
+            <param name="readlen" value="51" />
+            <output name="align" value="1234A-V3LOOP.align.csv" />
+            <output name="amino" value="1234A-V3LOOP.amino.csv" />
+            <output name="conseq" value="1234A-V3LOOP.conseq.csv" />
+            <output name="insert" value="1234A-V3LOOP.insert.csv" />
+            <output name="nuc" value="1234A-V3LOOP.nuc.csv" />
+        </test>
+    </tests>
+    <help><![CDATA[
+    ]]></help>
+    <expand macro="citations" />
+</tool>

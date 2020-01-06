@@ -1,0 +1,17 @@
+categories:
+- Sequence Analysis
+description: 'HIV/HCV Viral Analysis Pipeline'
+long_description: |
+  A pipeline for mapping FASTQ data to a set of viral reference sequences to generate consensus sequences, variant calls and coverage maps.
+name: micall_lite
+owner: public-health-bioinformatics
+remote_repository_url: https://github.com/public-health-bioinformatics/galaxy_tools/blob/master/tools/micall-lite
+homepage_url: https://github.com/PoonLab/MiCall-Lite
+type: unrestricted
+auto_tool_repositories:
+  name_template: "{{ tool_id }}"
+  description_template: "micall-lite tool suite: {{ tool_name }}"
+suite:
+  name: "suite_micall_lite"
+  description: "MiCall-Lite tools"
+  type: repository_suite_definition
