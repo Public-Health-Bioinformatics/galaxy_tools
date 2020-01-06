@@ -4,13 +4,10 @@ from __future__ import print_function
 
 
 import argparse
-
-
-from pprint import pprintg
+from pprint import pprint
 
 
 import yaml
-
 
 
 HCV_RULES_VERSION = "1.8"
