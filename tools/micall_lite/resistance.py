@@ -2,12 +2,19 @@
 
 from __future__ import print_function
 
+
 import argparse
+
+
+from pprint import pprintg
+
+
 import yaml
 
-from pprint import pprint
+
 
 HCV_RULES_VERSION = "1.8"
+
 
 def load_rules_config(rules_config, genotype, backup_genotype=None):
     rules = {
@@ -49,10 +56,12 @@ def load_rules_config(rules_config, genotype, backup_genotype=None):
         rules['drugs'][drug_code] = (drug['name'], drug_rules)
     return rules
 
+
 def main(args):
     with open(args.rules) as f:
         rules = load_rules_config(yaml.safe_load(f), None)
     pprint(rules)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

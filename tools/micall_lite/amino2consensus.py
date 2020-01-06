@@ -2,10 +2,12 @@
 
 from __future__ import print_function
 
-import csv
 import argparse
+import csv
 
-AMINO_ACIDS = ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y','*']
+
+AMINO_ACIDS = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y', '*']
+
 
 def determine_amino(amino_counts, threshold):
     amino = ""
@@ -19,12 +21,14 @@ def determine_amino(amino_counts, threshold):
         amino = "@"
     return amino
 
+
 def determine_first_region(amino_file):
     with open(amino_file) as f:
         reader = csv.DictReader(f)
         row = next(reader)
         region = row['region']
     return region
+
 
 def main(args):
     current_region = determine_first_region(args.amino)
@@ -50,8 +54,8 @@ def main(args):
                 seq.append(amino)
         print(">" + current_region)
         print(''.join(seq))
-                
-    
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("amino", help="MiCall amino.csv output file")
