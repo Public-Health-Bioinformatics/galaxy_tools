@@ -1,4 +1,4 @@
-<tool id="micall_lite" name="micall_lite" version="@TOOL_VERSION@+galaxy0">
+<tool id="micall_lite" name="micall_lite" version="@TOOL_VERSION@+galaxy1">
     <description></description>
     <macros>
         <import>macros.xml</import>
@@ -12,35 +12,35 @@
           #if str( $fastq_input.fastq_input_selector ) == "paired":
             #if $fastq_input.reads1.is_of_type("fastq.gz", "fastqsanger.gz"):
               #set unzipped = False
-              #set reads1 = $fastq_input.reads1.element_identifier + '_R1.fastq.gz'
+              #set reads1 = $fastq_input.reads1.name + '_R1.fastq.gz'
             #else if $fastq_input.reads1.is_of_type("fastq", "fastqsanger"):
               #set unzipped = True
-              #set reads1 = $fastq_input.reads1.element_identifier + '_R1.fastq'
+              #set reads1 = $fastq_input.reads1.name + '_R1.fastq'
             #end if
             ln -s '$fastq_input.reads1' '$reads1' &&
             #if $fastq_input.reads2.is_of_type("fastq.gz", "fastqsanger.gz"):
               #set unzipped = False
-              #set reads2 = $fastq_input.reads2.element_identifier + '_R2.fastq.gz'
+              #set reads2 = $fastq_input.reads2.name + '_R2.fastq.gz'
             #else if $fastq_input.reads2.is_of_type("fastq", "fastqsanger"):
               #set unzipped = True
-              #set reads2 = $fastq_input.reads2.element_identifier + '_R2.fastq'
+              #set reads2 = $fastq_input.reads2.name + '_R2.fastq'
             #end if
             ln -s '$fastq_input.reads2' '$reads2' &&
           #else if str( $fastq_input.fastq_input_selector ) == "paired_collection":
             #if $fastq_input.pair.forward.is_of_type("fastq.gz", "fastqsanger.gz"):
               #set unzipped = False
-              #set reads1 = $fastq_input.pair.element_identifier + '_R1.fastq.gz'
+              #set reads1 = $fastq_input.pair.name + '_R1.fastq.gz'
             #else if $fastq_input.pair.forward.is_of_type("fastq", "fastqsanger"):
               #set unzipped = True
-              #set reads1 = $fastq_input.pair.element_identifier + '_R1.fastq'
+              #set reads1 = $fastq_input.pair.name + '_R1.fastq'
             #end if
             ln -s '$fastq_input.pair.forward' '$reads1' &&
             #if $fastq_input.pair.reverse.is_of_type("fastq.gz", "fastqsanger.gz"):
               #set unzipped = False
-              #set reads2 = $fastq_input.pair.element_identifier + '_R2.fastq.gz'
+              #set reads2 = $fastq_input.pair.name + '_R2.fastq.gz'
             #else if $fastq_input.pair.reverse.is_of_type("fastq", "fastqsanger"):
               #set unzipped = True
-              #set reads2 = $fastq_input.pair.element_identifier + '_R2.fastq'
+              #set reads2 = $fastq_input.pair.name + '_R2.fastq'
             #end if
             ln -s '$fastq_input.pair.reverse' '$reads2' &&
           #end if
