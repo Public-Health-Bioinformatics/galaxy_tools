@@ -1,5 +1,5 @@
 <macros>
-    <token name="@TOOL_VERSION@">0.1rc3</token>
+    <token name="@TOOL_VERSION@">0.1rc4</token>
     <token name="@INTYPES@">
         fastq,fastq.gz,fastqsanger,fastqsanger.gz
     </token>

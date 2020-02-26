@@ -54,6 +54,11 @@
             --readlen ${readlen}
             '${reads1}'
             '${reads2}'
+            #if str( $projects_file_source.projects_file_source_selector ) == "tool_data_table":
+              --projects '${projects_file_source.projects_file.fields.path}'
+            #elif str( $projects_file_source.projects_file_source_selector ) == 'history':
+              --projects '${projects_file_source.projects_file}'
+            #end if
             --outdir 'outdir'
         ]]>
     </command>
