@@ -5,8 +5,6 @@
     </token>
     <xml name="citations">
         <citations>
-            <citation type="bibtex">
-            </citation>
         </citations>
     </xml>
 </macros>
