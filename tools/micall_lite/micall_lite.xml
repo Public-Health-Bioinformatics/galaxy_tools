@@ -1,5 +1,7 @@
 <tool id="micall_lite" name="micall_lite" version="@TOOL_VERSION@+galaxy0">
-    <description></description>
+    <description>
+        Human RNA virus genotyping pipeline
+    </description>
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -46,6 +48,7 @@
           #end if
           
           mkdir 'outdir' &&
+          
           micall
             --threads \${GALAXY_SLOTS:-1}
             --keep
