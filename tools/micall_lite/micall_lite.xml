@@ -48,6 +48,7 @@
           mkdir 'outdir' &&
           micall
             --threads \${GALAXY_SLOTS:-1}
+            --keep
             #if $unzipped:
               --unzipped
             #end if
