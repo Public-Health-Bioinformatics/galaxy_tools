@@ -1,0 +1,10 @@
+categories:
+- Sequence Analysis
+description: Build report table from NCBI BLAST results.
+homepage_url: https://github.com/Public-Health-Bioinformatics/galaxy_tools/blob/master/tools/blast_reporting
+long_description: |
+  Convert NCBI BLAST XML output into 12, 24, 26 or custom column tabular and HTML reports.
+name: blast_reporting
+owner: public-health-bioinformatics
+remote_repository_url: https://github.com/Public-Health-Bioinformatics/galaxy_tools/blob/master/tools/blast_reporting
+type: unrestricted
