@@ -1,13 +1,13 @@
 #!/usr/bin/python
 """Convert a BLAST XML file to 12 column tabular output
 
-This tool can be used both via command line and via a local Galaxy install.  
+This tool can be used both via command line and via a local Galaxy install.
 Galaxy uses .loc files as indicated by the tool_data_table_conf.xml.sample.
-The command line version uses .tab versions of the above files: 
-	blast_reporting_fields.loc
-	fasta_reference_dbs.loc
+The command line version uses .tab versions of the above files:
+        blast_reporting_fields.loc
+        fasta_reference_dbs.loc
 So for command-line use, ensure the .tab files are updated to their .loc counterparts.
- 
+
 Takes three command line options, input BLAST XML filename, output tabular
 BLAST filename, output format (std for standard 12 columns, or ext for the
 extended 25 columns offered in the BLAST+ wrappers).
@@ -15,7 +15,7 @@ extended 25 columns offered in the BLAST+ wrappers).
 The 12 columns output are 'qseqid sseqid pident length mismatch gapopen qstart
 qend sstart send evalue bitscore' or 'std' at the BLAST+ command line, which
 mean:
-   
+
 ====== ========= ============================================
 Column NCBI name Description
 ------ --------- --------------------------------------------
@@ -65,7 +65,7 @@ Column NCBI name     Description
 Most of these fields are given explicitly in the XML file, others some like
 the percentage identity and the number of gap openings must be calculated.
 
-In addition an option exists to select particular columns for the output 
+In addition an option exists to select particular columns for the output
 report.  Reference bin columns will be added if they have been included in
 search.
 
@@ -84,16 +84,16 @@ space character (probably a bug).
 
 python blast_reporting.py in_file out_tabular_file out_html_file out_format
 """
-import sys
-import re
 import os.path
+import sys
+
 import common
 import reference_bins
 #import templates.html_report
 
 if __name__ == '__main__' and __package__ is None:
-	from os import path
-	sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+    from os import path
+    sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
 if sys.version_info[:2] >= ( 2, 5 ):
     import xml.etree.cElementTree as ElementTree
