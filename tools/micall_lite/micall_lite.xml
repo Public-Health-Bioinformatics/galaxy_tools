@@ -1,5 +1,7 @@
 <tool id="micall_lite" name="micall_lite" version="@TOOL_VERSION@+galaxy0">
-    <description></description>
+    <description>
+        Human RNA virus genotyping pipeline
+    </description>
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -46,14 +48,21 @@
           #end if
           
           mkdir 'outdir' &&
+          
           micall
             --threads \${GALAXY_SLOTS:-1}
+            --keep
             #if $unzipped:
               --unzipped
             #end if
             --readlen ${readlen}
             '${reads1}'
             '${reads2}'
+            #if str( $projects_file_source.projects_file_source_selector ) == "tool_data_table":
+              --projects '${projects_file_source.projects_file.fields.path}'
+            #elif str( $projects_file_source.projects_file_source_selector ) == 'history':
+              --projects '${projects_file_source.projects_file}'
+            #end if
             --outdir 'outdir'
         ]]>
     </command>
@@ -71,6 +80,25 @@
                 <param format="@INTYPES@" name="pair" type="data_collection" collection_type="paired" label="Collection of paired reads"/>
             </when>
         </conditional>
+        <conditional name="projects_file_source">
+            <param name="projects_file_source_selector" type="select"
+                   label="Select a projects file from your history or use one from a tool data table?">
+                <option value="none" selected="true">No projects file</option>
+                <option value="tool_data_table">Projects file from tool data table</option>
+                <option value="history">Projects file from history</option>
+            </param>
+            <when value="none"/>
+            <when value="tool_data_table">
+                <param name="projects_file" type="select" format="json" label="MiCall-Lite Projects File">
+                    <options from_data_table="micall_lite_projects_files">
+                        <validator type="no_options" message="No MiCall-Lite projects files are available" />
+                    </options>
+                </param>
+            </when>
+            <when value="history">
+                <param name="projects_file" type="data" format="json" label="MiCall-Lite Projects File" help=""/>
+            </when>
+        </conditional>
         <param name="readlen" type="integer" min="1" value="251" max="600" label="Read Length" help="Read Length" />
     </inputs>
     <outputs>
@@ -82,6 +110,9 @@
     </outputs>
     <tests>
         <test>
+            <conditional name="projects_file_source" >
+                <param name="projects_file_source_selector" value="none" />
+            </conditional>
             <conditional name="fastq_input">
                 <param name="fastq_input_selector" value="paired"/>
                 <param name="reads1" value="1234A-V3LOOP_S1_L001_R1_001.fastq" />
@@ -95,6 +126,9 @@
             <output name="nuc" value="1234A-V3LOOP.nuc.csv" />
         </test>
         <test>
+            <conditional name="projects_file_source" >
+                <param name="projects_file_source_selector" value="none" />
+            </conditional>
             <conditional name="fastq_input">
                 <param name="fastq_input_selector" value="paired"/>
                 <param name="reads1" value="1234A-V3LOOP_S1_L001_R1_001.fastq.gz" />
@@ -108,6 +142,9 @@
             <output name="nuc" value="1234A-V3LOOP.nuc.csv" />
         </test>
         <test>
+            <conditional name="projects_file_source" >
+                <param name="projects_file_source_selector" value="none" />
+            </conditional>
             <conditional name="fastq_input">
                 <param name="fastq_input_selector" value="paired_collection" />
                 <param name="pair" >
@@ -125,6 +162,9 @@
             <output name="nuc" value="1234A-V3LOOP.nuc.csv" />
         </test>
         <test>
+            <conditional name="projects_file_source" >
+                <param name="projects_file_source_selector" value="none" />
+            </conditional>
             <conditional name="fastq_input">
                 <param name="fastq_input_selector" value="paired_collection" />
                 <param name="pair" >

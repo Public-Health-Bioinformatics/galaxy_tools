@@ -1,0 +1,6 @@
+# Tab separated with three columns:
+# - value (Galaxy records this in the Galaxy DB)
+# - name (Galaxy shows this in the UI)
+# - path (folder name containing the 'projects.json' file)
+#
+test_entry	"Test Projects File"	${__HERE__}/micall_lite_projects_files/40e72b00-53c2-4b39-ab8f-532d8d45b440
