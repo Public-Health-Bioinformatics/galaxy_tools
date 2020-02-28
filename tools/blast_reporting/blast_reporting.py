@@ -86,69 +86,65 @@ python blast_reporting.py in_file out_tabular_file out_html_file out_format
 """
 import os.path
 import sys
+import xml.etree.cElementTree as ElementTree
 
 import common
 import reference_bins
-#import templates.html_report
+# import templates.html_report
 
 if __name__ == '__main__' and __package__ is None:
     from os import path
     sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
-if sys.version_info[:2] >= ( 2, 5 ):
-    import xml.etree.cElementTree as ElementTree
-else:
-    from galaxy import eggs
-    import pkg_resources; pkg_resources.require( "elementtree" )
-    from elementtree import ElementTree
 
-class GenericRecord(object): pass
+class GenericRecord(object):
+    pass
+
 
 class XMLRecordScan(object): 
-	"""
-	XML Input file usually looks like:
+    """
+    XML Input file usually looks like:
 
-		<BlastOutput>
-			<BlastOutput_program>blastn</BlastOutput_program>
-			<BlastOutput_param>
-				<Parameters>
-					<Parameters_expect>0.001</Parameters_expect>
-					<Parameters_sc-match>1</Parameters_sc-match>
-					<Parameters_sc-mismatch>-2</Parameters_sc-mismatch>
-					<Parameters_gap-open>0</Parameters_gap-open>
-					<Parameters_gap-extend>0</Parameters_gap-extend>
-					<Parameters_filter>L;m;</Parameters_filter>
-				</Parameters>
-			</BlastOutput_param>
-			<Iteration>
-				<Iteration_iter-num>1</Iteration_iter-num>
-				<Iteration_query-ID>Query_1</Iteration_query-ID>
-				<Iteration_query-def>ENA|EF604038|EF604038.1 Uncultured bacterium clone 16saw43-2g09.q1k 16S ribosomal RNA gene, partial sequence</Iteration_query-def>
-				<Iteration_query-len>1364</Iteration_query-len>
-				<Iteration_hits>
-
-				<Hit>
-					<Hit_num>1</Hit_num>
-					<Hit_id>gi|444439670|ref|NR_074985.1|</Hit_id>
-					<Hit_hsps>...
-						<Hsp>...
-	"""
-	def __init__(self, options, output_format):
-		""" Creates a record object that holds field data for each <hit> iteration in Blastn XML data
-		
-		 .record object: holds values read in from <XML> <hit> record mainly.
-		 .tags dictionary: XML tags and the record.[x] fields/attributes that should be set to tag values.
-		 .column_format dictionary: Name to field count dictionary used for selecting # of output fields
-		 .fieldSpec dictionary: Specification of each possible field's type (for validation), full name, and suitability for sorting, filtering, etc.
-		 .custom_columns array takes list of custom columns to output. (If sorting by a column it must be in this list)
-		 .reference_bins dictionary
-		
-		"""
-		self.record = GenericRecord() # Set up so we can use object attributes.
-		
-		#This is a list of all incomming blast generated XML fields that we want to capture
-		# self.record gets all underscored variables values as well as new derived ones in process() below
-		self.tags = {
+    <BlastOutput>
+        <BlastOutput_program>blastn</BlastOutput_program>
+        <BlastOutput_param>
+            <Parameters>
+                <Parameters_expect>0.001</Parameters_expect>
+                <Parameters_sc-match>1</Parameters_sc-match>
+                <Parameters_sc-mismatch>-2</Parameters_sc-mismatch>
+                <Parameters_gap-open>0</Parameters_gap-open>
+                <Parameters_gap-extend>0</Parameters_gap-extend>
+                <Parameters_filter>L;m;</Parameters_filter>
+            </Parameters>
+        </BlastOutput_param>
+        <Iteration>
+            <Iteration_iter-num>1</Iteration_iter-num>
+            <Iteration_query-ID>Query_1</Iteration_query-ID>
+            <Iteration_query-def>ENA|EF604038|EF604038.1 Uncultured bacterium clone 16saw43-2g09.q1k 16S ribosomal RNA gene, partial sequence</Iteration_query-def>
+            <Iteration_query-len>1364</Iteration_query-len>
+            <Iteration_hits>
+                <Hit>
+                    <Hit_num>1</Hit_num>
+                    <Hit_id>gi|444439670|ref|NR_074985.1|</Hit_id>
+                    <Hit_hsps>...
+                    <Hsp>...
+    """
+    def __init__(self, options, output_format):
+        """ Creates a record object that holds field data for each <hit> iteration in Blastn XML data
+	
+        .record object: holds values read in from <XML> <hit> record mainly.
+        .tags dictionary: XML tags and the record.[x] fields/attributes that should be set to tag values.
+        .column_format dictionary: Name to field count dictionary used for selecting # of output fields
+        .fieldSpec dictionary: Specification of each possible field's type (for validation), full name, and suitability for sorting, filtering, etc.
+        .custom_columns array takes list of custom columns to output. (If sorting by a column it must be in this list)
+        .reference_bins dictionary
+	
+        """
+        self.record = GenericRecord() # Set up so we can use object attributes.
+	
+        # This is a list of all incomming blast generated XML fields that we want to capture
+        # self.record gets all underscored variables values as well as new derived ones in process() below
+        self.tags = {
 			"BlastOutput_program":  '_blast_program', 
 			"Iteration_query-ID":   '_qseqid',
 			"Iteration_query-def":  '_qdef',
