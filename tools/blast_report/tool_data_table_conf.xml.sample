@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<tables>
-    <!-- Locations of BLAST report templates in the required format -->
-    <table name="blast_report_templates" comment_char="#">
-        <columns>value, name, path</columns>
-        <file path="tool-data/blast_report_templates.loc" />
-    </table>
-</tables>
