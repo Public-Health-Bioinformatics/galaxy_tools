@@ -164,28 +164,28 @@ with open(args.input_tab) as input_tab:
             queries[-1].kw_filtered += 1
             continue
         descr = descrs.split(';')[0]
-        
-        #ATTEMPT BIN
+
+        # ATTEMPT BIN
         subj_bins = []
-        for bin in bins: #if we are not binning, bins = [] so for loop not entered
+        for bin in bins:  # if we are not binning, bins = [] so for loop not entered
             for acc in accs:
                 if acc.split('.')[0] in bin.dict:
                     try:
                         queries[-1].bins[bin.label].append(len(queries[-1].matches))
-                    except:
+                    except Exception as e:
                         queries[-1].bins[bin.label] = [len(queries[-1].matches)]
                     subj_bins.append(bin.label)
-                    break #this result has been binned to this bin so break
+                    break  # this result has been binned to this bin so break
         acc = accs[0]
-        
+
         score = int(float(cols[SCORE_COL]))
         p_cov = float(cols[PCOV_COL])
-        
-        #SAVE RESULT
+
+        # SAVE RESULT
         queries[-1].matches.append(
             BLASTMatch(acc, descr, score, p_cov, p_ident, subj_bins)
         )
-        output_tab.write(line)            
+        output_tab.write(line)
 input_tab.close()
 output_tab.close()
 
@@ -205,4 +205,3 @@ html = Template(file=args.cheetah_tmpl, searchList=[namespace])
 out_html = open(args.output_html, 'w')
 out_html.write(str(html))
 out_html.close()
-
