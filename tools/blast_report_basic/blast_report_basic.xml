@@ -5,8 +5,8 @@
           python '${__tool_directory__}/blast_report.py' 
             --min-identity ${min_identity}
             --filter-keywords '${filter_keywords}'
-            #if str($bins) != "None"
-              -b '${bins.fields.path}'
+            #if str($reference_database_bins) != "None"
+              -b '${reference_database_bins.fields.path}'
             #end if
             $discard_redundant
             '${tabular_blast_report_input}'
@@ -19,7 +19,7 @@
         <param name="tabular_blast_report_input" type="data" format="tabular" label="Tabular BLAST results (extended 25 columns + qcov)"/>
         <param name="min_identity" type="integer" min="90" max="100" value="97" label="Minimum percentage identity"/>
         <param name="filter_keywords" type="text" size="50" label="Comma-separated list of description keyword filters" value="bovine,clone,environmental,swine,uncultivated,uncultured,unidentified"/>
-        <param name="bins" type="select" label="Reference Database Bins" multiple="true" display="checkboxes">
+        <param name="reference_database_bins" type="select" label="Reference Database Bins" multiple="true" display="checkboxes">
             <options from_data_table="blast_report_reference_database_bins">
                 <validator type="no_options" message="No BLAST reference bins available" />
             </options>
@@ -31,6 +31,11 @@
         <data name="out_tab" format="tabular" label="$tool.name on data $tabular_blast_report_input.hid: tabular results"/>
     </outputs>
     <tests>
+        <test>
+	    <param name="reference_database_bins" value="test_entry"/>
+	    <param name="tabular_blast_report_input" value="NR_114042.1_vs_NCBI16SMicrobial_top20_standard25col_plus_qcovs.tsv"/>
+            <output name="out_tab" file="NR_114042.1_vs_NCBI16SMicrobial_output_report_tabular.tsv" ftype="tabular"/>
+        </test>
     </tests>
     <help>
 
