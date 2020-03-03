@@ -9,7 +9,7 @@ import sys
 from Cheetah.Template import Template
 
 
-def stop_err( msg ):
+def stop_err(msg):
     sys.stderr.write("%s\n" % msg)
     sys.exit(1)
 
@@ -18,12 +18,12 @@ class BLASTBin:
     def __init__(self, label, file):
         self.label = label
         self.dict = {}
-        
+
         file_in = open(file)
         for line in file_in:
             self.dict[line.rstrip().split('.')[0]] = ''
         file_in.close()
-    
+
     def __str__(self):
         return "label: %s    dict: %s" % (self.label, str(self.dict))
 
@@ -33,11 +33,11 @@ class BLASTQuery:
         self.query_id = query_id
         self.matches = []
         self.match_accessions = {}
-        self.bins = {} #{bin(label):[match indexes]}
+        self.bins = {}  # {bin(label):[match indexes]}
         self.pident_filtered = 0
         self.kw_filtered = 0
-        self.kw_filtered_breakdown = {} #{kw:count}
-        
+        self.kw_filtered_breakdown = {}  # {kw:count}
+
     def __str__(self):
         return "query_id: %s    len(matches): %s    bins (labels only): %s    pident_filtered: %s    kw_filtered: %s    kw_filtered_breakdown: %s" \
             % (self.query_id,
@@ -56,17 +56,17 @@ class BLASTMatch:
         self.p_cov = p_cov
         self.p_ident = p_ident
         self.bins = subject_bins
-        
+
     def __str__(self):
         return "subject_acc: %s    subject_descr: %s    score: %s    p-cov: %s    p-ident: %s" \
             % (self.subject_acc,
                self.subject_descr,
                str(self.score),
-               str(round(self.p_cov,2)),
+               str(round(self.p_cov, 2)),
                str(round(self.p_ident, 2)))
 
 
-#PARSE OPTIONS AND ARGUMENTS
+# PARSE OPTIONS AND ARGUMENTS
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-f', '--filter-keywords',
@@ -96,15 +96,15 @@ args = parser.parse_args()
 print('input_tab: %s    cheetah_tmpl: %s    output_html: %s    output_tab: %s' % (args.input_tab, args.cheetah_tmpl, args.output_html, args.output_tab))
 
 
-#BINS
+# BINS
 bins=[]
-if args.bins != None:
+if args.bins is not None:
     for bin in args.bins:
         bins.append(BLASTBin(bin[0], bin[1]))
 
 print('database bins: %s' % str([bin.label for bin in bins]))
 
-#FILTERS
+# FILTERS
 filter_pident = 0
 filter_kws = []
 if args.filter_keywords:
@@ -123,7 +123,7 @@ PCOV_COL = 25
 queries = []
 current_query = ''
 output_tab = open(args.output_tab, 'w')
-    
+
 with open(args.input_tab) as input_tab:
     for line in input_tab:
         cols = line.split('\t')
