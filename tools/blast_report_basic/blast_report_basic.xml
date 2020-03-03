@@ -6,7 +6,7 @@
             --min-identity ${min_identity}
             --filter-keywords '${filter_keywords}'
             #if str($bins) != "None"
-              -b '${bins}'
+              -b '${bins.fields.path}'
             #end if
             $discard_redundant
             '${tabular_blast_report_input}'
