@@ -2,32 +2,33 @@
     <description>Produce an HTML table report of BLAST results</description>
     <command>
         <![CDATA[
-          '${__tool_directory__}/blast_report.py' 
-            -f ${filter_pident}:$filter_kws
+          python '${__tool_directory__}/blast_report.py' 
+            --min-identity ${min_identity}
+	    --filter-keywords '${filter_kws}'
             #if str($bins) != "None"
-              -b "${bins}"
+              -b '${bins}'
             #end if
             $discard_redundant
 	    '${tabular_blast_report_input}'
-            '${__tool_directory__}/templates/template2.tmpl}'
+            '${__tool_directory__}/templates/template2.tmpl'
             '${out_html}'
             '${out_tab}'
         ]]>
     </command>
     <inputs>
         <param name="tabular_blast_report_input" type="data" format="tabular" label="Tabular BLAST results (extended 26 columns)"/>
-        <param name="filter_pident" type="integer" min="90" max="100" value="97" label="Minimum percentage identity"/>
+        <param name="min_identity" type="integer" min="90" max="100" value="97" label="Minimum percentage identity"/>
         <param name="filter_kws" type="text" size="50" label="Comma-separated list of description keyword filters" value="bovine,clone,environmental,swine,uncultivated,uncultured,unidentified"/>
         <param name="bins" type="select" label="Database bins" multiple="true" display="checkboxes">
-            <options from_data_table="blast_reference_bins">
+            <options from_data_table="blast_reference_database_bins">
                 <validator type="no_options" message="No BLAST reference bins available" />
             </options>
         </param>
        	<param name="discard_redundant" type="boolean" truevalue="-r" falsevalue="" label="Throw out redundant hits?"/> 
     </inputs>
     <outputs>
-        <data name="out_html" format="html" label="$tool.name on data $in_tab.hid: report"/>
-        <data name="out_tab" format="tabular" label="$tool.name on data $in_tab.hid: tabular results"/>
+        <data name="out_html" format="html" label="$tool.name on data $tabular_blast_report_input.hid: report"/>
+        <data name="out_tab" format="tabular" label="$tool.name on data $tabular_blast_report_input.hid: tabular results"/>
     </outputs>
     <tests>
     </tests>

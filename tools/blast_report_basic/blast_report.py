@@ -1,8 +1,12 @@
 #!/usr/bin/env python
+
+from __future__ import print_function
+
 '''Report on BLAST results.
 
 python blast_report.py input_tab cheetah_tmpl output_html output_tab [-f [filter_pident]:[filterkw1,...,filterkwN]] [-b bin1_label=bin1_path[,...binN_label=binN_path]]
 '''
+
 import argparse
 import re
 import sys
@@ -67,30 +71,30 @@ class BLASTMatch:
                str(round(self.p_ident, 2)))
 
 
-
 #PARSE OPTIONS AND ARGUMENTS
 parser = argparse.ArgumentParser()
 
-parser.add_argument('-f', '--filter',
-                    type='string',
-                    dest='filter',
+parser.add_argument('-f', '--filter-keywords',
+                    dest='filter_keywords',
+                    )
+parser.add_argument('-i', '--min-identity',
+                    dest='min_identity',
                     )
 parser.add_argument('-b', '--bins',
-                    type='string',
                     dest='bins'
                     )
-parser.add_argument('-r', '--redundant',
-                    dest='redundant',
+parser.add_argument('-r', '--discard-redundant',
+                    dest='discard_redundant',
                     default=False,
                     action='store_true'
                     )
+parser.add_argument('input_tab')
+parser.add_argument('cheetah_tmpl')
+parser.add_argument('output_html')
+parser.add_argument('output_tab')
 args = parser.parse_args()
 
-try:
-    input_tab, cheetah_tmpl, output_html, output_tab = args
-except:
-    stop_err('you must supply the arguments input_tab, cheetah_tmpl and output_html.')
-# print('input_tab: %s    cheetah_tmpl: %s    output_html: %s    output_tab: %s' % (input_tab, cheetah_tmpl, output_html, output_tab))
+print('input_tab: %s    cheetah_tmpl: %s    output_html: %s    output_tab: %s' % (args.input_tab, args.cheetah_tmpl, args.output_html, args.output_tab))
 
 
 #BINS
@@ -99,29 +103,27 @@ if args.bins != None:
     bins = list([BLASTBin(label_file.split('=')[0],label_file.split('=')[-1]) for label_file in args.bins.split(',')])
 print('database bins: %s' % str([bin.label for bin in bins]))
 
-    #FILTERS
+#FILTERS
 filter_pident = 0
 filter_kws = []
-if args.filter != None:
-    pident_kws = args.filter.split(':')
-    filter_pident = float(pident_kws[0])
-    filter_kws = pident_kws[-1].split(',')
-print('filter_pident: %s    filter_kws: %s' % (str(filter_pident), str(filter_kws)))
+if args.filter_keywords:
+    filter_kws = args.filter_keywords.split(',')
+print('minimum percent identity: %s    filter_kws: %s' % (str(args.min_identity), str(filter_kws)))
 
-if args.redundant:
+if args.discard_redundant:
     print('Throwing out redundant hits...')
 
-#RESULTS!
+
 PIDENT_COL = 2
-DESCR_COL = 25
+DESCR_COL = 24
 SUBJ_ID_COL = 12
 SCORE_COL = 11
-PCOV_COL = 24
+PCOV_COL = 25
 queries = []
 current_query = ''
-output_tab = open(output_tab, 'w')
+output_tab = open(args.output_tab, 'w')
     
-with open(input_tab) as input_tab:
+with open(args.input_tab) as input_tab:
     for line in input_tab:
         cols = line.split('\t')
         if cols[0] != current_query:
@@ -134,7 +136,7 @@ with open(input_tab) as input_tab:
             stop_err("Problem with splitting:" + cols[SUBJ_ID_COL])
 
         #hsp option: keep best (first) hit only for each query and accession id.
-        if args.redundant:
+        if args.discard_redundant:
             if accs[0] in queries[-1].match_accessions:
                 continue #don't save the result and skip to the next
             else:
@@ -151,7 +153,7 @@ with open(input_tab) as input_tab:
         #FILTER BY KEY WORDS
         filter_by_kw = False
         for kw in filter_kws:
-            kw = kw.strip() #Fix by Damion D Nov 2013
+            kw = kw.strip()
             if kw != '' and re.search(kw, descrs, re.IGNORECASE):
                 filter_by_kw = True
                 try:
@@ -199,11 +201,8 @@ for query in queries:
 '''
 
 namespace = {'queries': queries}
-html = Template(file=cheetah_tmpl, searchList=[namespace])
-out_html = open(output_html, 'w')
+html = Template(file=args.cheetah_tmpl, searchList=[namespace])
+out_html = open(args.output_html, 'w')
 out_html.write(str(html))
 out_html.close()
 
-
-if __name__ == '__main__':
-    main()
