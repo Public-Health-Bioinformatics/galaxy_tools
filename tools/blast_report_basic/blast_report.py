@@ -145,12 +145,12 @@ with open(args.input_tab) as input_tab:
 
         p_ident = float(cols[PIDENT_COL])
         # FILTER BY PIDENT
-        if p_ident < filter_pident: # if we are not filtering, filter_pident == 0 and this will never evaluate to True
+        if p_ident < filter_pident:  # if we are not filtering, filter_pident == 0 and this will never evaluate to True
             queries[-1].pident_filtered += 1
             continue
-        
+
         descrs = cols[DESCR_COL]
-        #FILTER BY KEY WORDS
+        # FILTER BY KEY WORDS
         filter_by_kw = False
         for kw in filter_kws:
             kw = kw.strip()
@@ -158,9 +158,9 @@ with open(args.input_tab) as input_tab:
                 filter_by_kw = True
                 try:
                     queries[-1].kw_filtered_breakdown[kw] += 1
-                except:
+                except Exception as e:
                     queries[-1].kw_filtered_breakdown[kw] = 1
-        if filter_by_kw: #if we are not filtering, for loop will not be entered and this will never be True
+        if filter_by_kw:  # if we are not filtering, for loop will not be entered and this will never be True
             queries[-1].kw_filtered += 1
             continue
         descr = descrs.split(';')[0]
