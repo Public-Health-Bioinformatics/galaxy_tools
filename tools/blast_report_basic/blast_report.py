@@ -97,7 +97,7 @@ print('input_tab: %s    cheetah_tmpl: %s    output_html: %s    output_tab: %s' %
 
 
 # BINS
-bins=[]
+bins = []
 if args.bins is not None:
     for bin in args.bins:
         bins.append(BLASTBin(bin[0], bin[1]))
@@ -136,17 +136,16 @@ with open(args.input_tab) as input_tab:
         except IndexError as e:
             stop_err("Problem with splitting:" + cols[SUBJ_ID_COL])
 
-        #hsp option: keep best (first) hit only for each query and accession id.
+        # keep best (first) hit only for each query and accession id.
         if args.discard_redundant:
             if accs[0] in queries[-1].match_accessions:
-                continue #don't save the result and skip to the next
+                continue  # don't save the result and skip to the next
             else:
                 queries[-1].match_accessions[accs[0]] = ''
 
-
         p_ident = float(cols[PIDENT_COL])
-        #FILTER BY PIDENT
-        if p_ident < filter_pident: #if we are not filtering, filter_pident == 0 and this will never evaluate to True
+        # FILTER BY PIDENT
+        if p_ident < filter_pident: # if we are not filtering, filter_pident == 0 and this will never evaluate to True
             queries[-1].pident_filtered += 1
             continue
         
