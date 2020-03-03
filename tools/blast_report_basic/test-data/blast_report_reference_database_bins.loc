@@ -1,0 +1,6 @@
+# Tab separated with three columns:
+# - value (Galaxy records this in the Galaxy DB)
+# - name (Galaxy shows this in the UI)
+# - path (Path to reference database bin file (tsv))
+#
+test_entry	"Test Reference Database Bin"	${__HERE__}/reference_database_bin.tsv

@@ -1,0 +1,90 @@
+<tool id="blast_report_basic" name="BLAST report" version="0.1.0+galaxy0" >
+    <description>Produce an HTML table report of BLAST results</description>
+    <command>
+        <![CDATA[
+          python '${__tool_directory__}/blast_report.py' 
+            --min-identity ${min_identity}
+            --filter-keywords '${filter_keywords}'
+            $discard_redundant
+            '${tabular_blast_report_input}'
+            '${__tool_directory__}/templates/template2.tmpl'
+            '${out_html}'
+            '${out_tab}'
+	    #if str($reference_database_bins) != "None"
+	      #for $name, $path in zip(str($reference_database_bins.fields.name).split(','), str($reference_database_bins.fields.path).split(',')):
+                -b '${name}' '${path}'
+	      #end for
+            #end if
+        ]]>
+    </command>
+    <inputs>
+        <param name="tabular_blast_report_input" type="data" format="tabular" label="Tabular BLAST results (extended 25 columns + qcov)"/>
+        <param name="min_identity" type="integer" min="90" max="100" value="97" label="Minimum percentage identity"/>
+        <param name="filter_keywords" type="text" size="50" label="Comma-separated list of description keyword filters" value="bovine,clone,environmental,swine,uncultivated,uncultured,unidentified"/>
+        <param name="reference_database_bins" type="select" label="Reference Database Bins" multiple="true" display="checkboxes">
+            <options from_data_table="blast_report_reference_database_bins">
+                <validator type="no_options" message="No BLAST reference bins available" />
+            </options>
+        </param>
+       	<param name="discard_redundant" type="boolean" truevalue="-r" falsevalue="" label="Throw out redundant hits?"/> 
+    </inputs>
+    <outputs>
+        <data name="out_html" format="html" label="$tool.name on data $tabular_blast_report_input.hid: report"/>
+        <data name="out_tab" format="tabular" label="$tool.name on data $tabular_blast_report_input.hid: tabular results"/>
+    </outputs>
+    <tests>
+        <test>
+	    <param name="reference_database_bins" value="test_entry"/>
+	    <param name="tabular_blast_report_input" value="NR_114042.1_vs_NCBI16SMicrobial_top20_standard25col_plus_qcovs.tsv"/>
+            <output name="out_tab" file="NR_114042.1_vs_NCBI16SMicrobial_output_report_tabular.tsv" ftype="tabular"/>
+        </test>
+    </tests>
+    <help>
+
+.. class:: infomark
+
+**What it does**
+
+This tool produces a HTML report for each query in a tabular BLAST file.
+
+----
+
+**Tabular BLAST results**
+
+One or more query's BLAST results in extended 26 column tabular format. 
+
+----
+
+**Report template**
+
+The report template dictates the format of the HTML report.
+Note that changing the template from the standard "Top 20 hits shown, toggle remainder" to "Euzby results shown first" causes
+the order of the results in the HTML report and the tabular BLAST results (if outputted) to be inconsistent with each other.
+
+----
+
+**Minimum percentage identity**
+
+Filter by percentage identity. This filter is applied before the description keyword filters.
+
+----
+
+**Comma-separated list of description keyword filters**
+
+Filter by description keywords. Do not include spaces (unless your keyword is two words). These are applied
+after the percentage identity filter.
+
+----
+
+**Database bins**
+
+Bin the results by accession number into "database bins."
+
+----
+
+**Throw out redundant hits?**
+
+Only the first hit for any accession number will be reported.
+
+    </help>
+</tool>
