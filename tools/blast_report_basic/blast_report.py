@@ -2,17 +2,12 @@
 
 from __future__ import print_function
 
-'''Report on BLAST results.
-
-python blast_report.py input_tab cheetah_tmpl output_html output_tab [-i [min_identity]] [-f filterkw1,...,filterkwN]] [-b bin1_label bin1_path[,...binN_label binN_path]]
-'''
-
 import argparse
 import re
 import sys
 
 from Cheetah.Template import Template
-from pprint import pprint
+
 
 def stop_err( msg ):
     sys.stderr.write("%s\n" % msg)
@@ -97,7 +92,6 @@ parser.add_argument('output_tab')
 
 args = parser.parse_args()
 
-pprint(args.bins)
 
 print('input_tab: %s    cheetah_tmpl: %s    output_html: %s    output_tab: %s' % (args.input_tab, args.cheetah_tmpl, args.output_html, args.output_tab))
 
