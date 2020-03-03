@@ -1,6 +1,6 @@
 <tool id="blast_report_basic" name="BLAST report" version="0.1.0+galaxy0" >
     <description>Produce an HTML table report of BLAST results</description>
-    <command detect_errors="error_code">
+    <command>
         <![CDATA[
           '${__tool_directory__}/blast_report.py' 
             -f ${filter_pident}:$filter_kws
@@ -29,6 +29,8 @@
         <data name="out_html" format="html" label="$tool.name on data $in_tab.hid: report"/>
         <data name="out_tab" format="tabular" label="$tool.name on data $in_tab.hid: tabular results"/>
     </outputs>
+    <tests>
+    </tests>
     <help>
 
 .. class:: infomark
