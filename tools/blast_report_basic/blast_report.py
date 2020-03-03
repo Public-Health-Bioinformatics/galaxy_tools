@@ -39,7 +39,15 @@ class BLASTQuery:
         self.kw_filtered_breakdown = {}  # {kw:count}
 
     def __str__(self):
-        return "query_id: %s    len(matches): %s    bins (labels only): %s    pident_filtered: %s    kw_filtered: %s    kw_filtered_breakdown: %s" \
+        format_string = "\t".join([
+            "query_id: %s",
+            "len(matches): %s",
+            "bins (labels only): %s",
+            "pident_filtered: %s",
+            "kw_filtered: %s",
+            "kw_filtered_breakdown: %s"
+        ])
+        return format_string \
             % (self.query_id,
                str(len(self.matches)),
                str([bin.label for bin in bins]),
@@ -91,10 +99,6 @@ parser.add_argument('output_html')
 parser.add_argument('output_tab')
 
 args = parser.parse_args()
-
-
-print('input_tab: %s    cheetah_tmpl: %s    output_html: %s    output_tab: %s' % (args.input_tab, args.cheetah_tmpl, args.output_html, args.output_tab))
-
 
 # BINS
 bins = []
