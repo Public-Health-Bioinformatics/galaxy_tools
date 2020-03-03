@@ -4,22 +4,22 @@
         <![CDATA[
           python '${__tool_directory__}/blast_report.py' 
             --min-identity ${min_identity}
-	    --filter-keywords '${filter_kws}'
+            --filter-keywords '${filter_keywords}'
             #if str($bins) != "None"
               -b '${bins}'
             #end if
             $discard_redundant
-	    '${tabular_blast_report_input}'
+            '${tabular_blast_report_input}'
             '${__tool_directory__}/templates/template2.tmpl'
             '${out_html}'
             '${out_tab}'
         ]]>
     </command>
     <inputs>
-        <param name="tabular_blast_report_input" type="data" format="tabular" label="Tabular BLAST results (extended 26 columns)"/>
+        <param name="tabular_blast_report_input" type="data" format="tabular" label="Tabular BLAST results (extended 25 columns + qcov)"/>
         <param name="min_identity" type="integer" min="90" max="100" value="97" label="Minimum percentage identity"/>
-        <param name="filter_kws" type="text" size="50" label="Comma-separated list of description keyword filters" value="bovine,clone,environmental,swine,uncultivated,uncultured,unidentified"/>
-        <param name="bins" type="select" label="Database bins" multiple="true" display="checkboxes">
+        <param name="filter_keywords" type="text" size="50" label="Comma-separated list of description keyword filters" value="bovine,clone,environmental,swine,uncultivated,uncultured,unidentified"/>
+        <param name="bins" type="select" label="Reference Database Bins" multiple="true" display="checkboxes">
             <options from_data_table="blast_report_reference_database_bins">
                 <validator type="no_options" message="No BLAST reference bins available" />
             </options>
