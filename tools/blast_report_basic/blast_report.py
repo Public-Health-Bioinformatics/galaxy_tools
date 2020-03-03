@@ -4,7 +4,7 @@ from __future__ import print_function
 
 '''Report on BLAST results.
 
-python blast_report.py input_tab cheetah_tmpl output_html output_tab [-f [filter_pident]:[filterkw1,...,filterkwN]] [-b bin1_label=bin1_path[,...binN_label=binN_path]]
+python blast_report.py input_tab cheetah_tmpl output_html output_tab [-i [min_identity]] [-f filterkw1,...,filterkwN]] [-b bin1_label bin1_path[,...binN_label binN_path]]
 '''
 
 import argparse
@@ -12,7 +12,7 @@ import re
 import sys
 
 from Cheetah.Template import Template
-
+from pprint import pprint
 
 def stop_err( msg ):
     sys.stderr.write("%s\n" % msg)
@@ -81,7 +81,9 @@ parser.add_argument('-i', '--min-identity',
                     dest='min_identity',
                     )
 parser.add_argument('-b', '--bins',
-                    dest='bins'
+                    dest='bins',
+                    action='append',
+                    nargs='+'
                     )
 parser.add_argument('-r', '--discard-redundant',
                     dest='discard_redundant',
@@ -92,7 +94,10 @@ parser.add_argument('input_tab')
 parser.add_argument('cheetah_tmpl')
 parser.add_argument('output_html')
 parser.add_argument('output_tab')
+
 args = parser.parse_args()
+
+pprint(args.bins)
 
 print('input_tab: %s    cheetah_tmpl: %s    output_html: %s    output_tab: %s' % (args.input_tab, args.cheetah_tmpl, args.output_html, args.output_tab))
 
@@ -100,7 +105,9 @@ print('input_tab: %s    cheetah_tmpl: %s    output_html: %s    output_tab: %s' %
 #BINS
 bins=[]
 if args.bins != None:
-    bins = list([BLASTBin(label_file.split('=')[0],label_file.split('=')[-1]) for label_file in args.bins.split(',')])
+    for bin in args.bins:
+        bins.append(BLASTBin(bin[0], bin[1]))
+
 print('database bins: %s' % str([bin.label for bin in bins]))
 
 #FILTERS

@@ -5,14 +5,16 @@
           python '${__tool_directory__}/blast_report.py' 
             --min-identity ${min_identity}
             --filter-keywords '${filter_keywords}'
-            #if str($reference_database_bins) != "None"
-              -b '${reference_database_bins.fields.path}'
-            #end if
             $discard_redundant
             '${tabular_blast_report_input}'
             '${__tool_directory__}/templates/template2.tmpl'
             '${out_html}'
             '${out_tab}'
+	    #if str($reference_database_bins) != "None"
+	      #for $name, $path in zip(str($reference_database_bins.fields.name).split(','), str($reference_database_bins.fields.path).split(',')):
+                -b '${name}' '${path}'
+	      #end for
+            #end if
         ]]>
     </command>
     <inputs>
@@ -83,12 +85,6 @@ Bin the results by accession number into "database bins."
 **Throw out redundant hits?**
 
 Only the first hit for any accession number will be reported.
-
-----
-
-**Output tabular BLAST results?**
-
-This option produces a tabular BLAST file with the same results as those shown in the report.
 
     </help>
 </tool>
