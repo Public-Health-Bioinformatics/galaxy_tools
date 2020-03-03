@@ -20,7 +20,7 @@
         <param name="min_identity" type="integer" min="90" max="100" value="97" label="Minimum percentage identity"/>
         <param name="filter_kws" type="text" size="50" label="Comma-separated list of description keyword filters" value="bovine,clone,environmental,swine,uncultivated,uncultured,unidentified"/>
         <param name="bins" type="select" label="Database bins" multiple="true" display="checkboxes">
-            <options from_data_table="blast_reference_database_bins">
+            <options from_data_table="blast_report_reference_database_bins">
                 <validator type="no_options" message="No BLAST reference bins available" />
             </options>
         </param>

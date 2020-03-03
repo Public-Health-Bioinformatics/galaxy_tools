@@ -1,7 +1,0 @@
-# Expect three columns, tab separated, as follows:
-# - value (Galaxy records this in the Galaxy DB, consider using a UUID but any unique value will work)
-# - name (Galaxy shows this in the UI)
-# - path (Path to the blast report template (cheetah format))
-#
-# e.g.
-# f45ee89a-d456-469a-8aeb-54cdfea821ec<tab>Default BLAST Report Template<tab>/path/to/template.tmpl
