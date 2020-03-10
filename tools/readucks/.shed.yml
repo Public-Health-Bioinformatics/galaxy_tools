@@ -1,0 +1,12 @@
+categories:
+  - Sequence Analysis
+description: 'Nanopore read de-multiplexer'
+long_description: |
+  inspired by the demultiplexing options in porechop (by Ryan Wick) but without the adapter trimming options - it just demuxes.
+  It uses the parasail library with its Python bindings to do pairwise alignment which provides a considerable speed up over the
+  seqan library used by porechop due to its low-level use of vector processor instructions.
+name: readucks
+owner: public-health-bioinformatics
+remote_repository_url: https://github.com/galaxyproject/tools-iuc/tree/master/tools/readucks
+homepage_url: https://github.com/artic-network/readucks
+type: unrestricted
