@@ -6,7 +6,7 @@
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
         '${__tool_directory__}/align_trim.py'
-             '${bedfile}'
+             '${primer_scheme_bedfile}'
              --start 
              --report '${start_trim_report}'
              < '${input_alignment}'
@@ -16,7 +16,7 @@
     ]]></command>
     <inputs>
         <input name="input_alignment" format="bam"/>
-        <param name="bedfile" type="select" format="bed">
+        <param name="primer_scheme_bedfile" type="select" format="bed">
 	    <options from_data_table="primer_scheme_bedfiles">
 	        <validator type="no_options" message="No primer scheme .bed files are available" />
             </options>
@@ -28,8 +28,6 @@
         <data name="trimmed_sorted_alignment" format="bam" />
     </outputs>
     <tests>
-        <test>
-        </test>
     </tests>
     <help><![CDATA[
     ]]></help>
