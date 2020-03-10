@@ -5,6 +5,7 @@
 # This file adapted from ARTICnetwork 'fieldbioinformatics' pipeline:
 # https://github.com/artic-network/fieldbioinformatics
 
+import csv
 import sys
 
 from collections import defaultdict

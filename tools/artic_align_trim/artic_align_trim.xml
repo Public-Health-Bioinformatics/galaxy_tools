@@ -5,27 +5,37 @@
         <requirement type="package" version="1.9">samtools</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        '${__tool_directory__}/align_trim.py'
-             '${primer_scheme_bedfile}'
-             --start 
-             --report '${start_trim_report}'
-             < '${input_alignment}'
-             2> '${start_trim_err}' |
+        python '${__tool_directory__}/align_trim.py'
+            '${primer_scheme_bedfile.fields.path}'
+            --start 
+            --report '${start_trim_report}'
+            < '${input_alignment}'
+            2> '${start_trim_err}' |
         samtools view -bS - |
-        samtools sort - -o '${trimmed_sorted_alignment}' 
+        samtools sort - -o '${start_trimmed_sorted_alignment}' &&
+        python '${__tool_directory__}/align_trim.py'
+            '${primer_scheme_bedfile.fields.path}'
+            --report '${end_trim_report}'
+            < '${input_alignment}'
+            2> '${end_trim_err}' |
+        samtools view -bS - |
+        samtools sort - -o '${end_trimmed_sorted_alignment}'
     ]]></command>
     <inputs>
-        <input name="input_alignment" format="bam"/>
-        <param name="primer_scheme_bedfile" type="select" format="bed">
+        <param name="input_alignment" type="data" format="bam" label="Input Alignment"/>
+        <param name="primer_scheme_bedfile" type="select" format="bed" label="Primer Scheme">
 	    <options from_data_table="primer_scheme_bedfiles">
 	        <validator type="no_options" message="No primer scheme .bed files are available" />
             </options>
 	</param>
     </inputs>
     <outputs>
-        <data name="start_trim_report" format="txt" label="Alignment Report" />
-        <data name="start_trim_err" format="txt" label="Alignment Error Report" />
-        <data name="trimmed_sorted_alignment" format="bam" />
+        <data name="start_trim_report" format="tabular" label="Report (Trim to start of primers)" />
+        <data name="start_trim_err" format="txt" label="Error Report (Trim to start of primers)" />
+        <data name="end_trim_report" format="tabular" label="Report (Trim to end of primers)" />
+        <data name="end_trim_err" format="txt" label="Error Report (Trim to end of primers)" />
+        <data name="start_trimmed_sorted_alignment" format="bam" label="Trimmed Alignment (Trim to start of primers)" />
+        <data name="end_trimmed_sorted_alignment" format="bam" label="Trimmed Alignment (Trim to end of primers)" />
     </outputs>
     <tests>
     </tests>
