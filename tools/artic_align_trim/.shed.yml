@@ -1,0 +1,10 @@
+categories:
+- Sequence Analysis
+description: Trim aligned reads based on a set of primer loci
+homepage_url: https://github.com/artic-network/fieldbioinformatics/blob/master/artic/align_trim.py
+long_description: |
+  Trim aligned reads based on a set of primer loci
+name: artic_align_trim
+owner: public-health-bioinformatics
+remote_repository_url: https://github.com/public-health-bioinformatics/galaxy_tools/blob/master/tools/artic_align_trim
+type: unrestricted
