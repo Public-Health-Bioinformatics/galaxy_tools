@@ -1,0 +1,10 @@
+categories:
+- Sequence Analysis
+description: Generate consensus fasta file from an alignment and VCF file
+homepage_url: https://github.com/artic-network/fieldbioinformatics/blob/master/artic/margin_cons_medaka.py
+long_description: |
+  Generate consensus fasta file from an alignment and VCF file
+name: artic_margin_cons_medaka
+owner: public-health-bioinformatics
+remote_repository_url: https://github.com/public-health-bioinformatics/galaxy_tools/blob/master/tools/artic_margin_cons_medaka
+type: unrestricted
