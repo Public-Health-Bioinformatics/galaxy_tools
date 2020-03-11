@@ -1,4 +1,4 @@
-<tool id="medaka_snp" name="medaka_snp" version="@VERSION@" profile="19.01">
+<tool id="medaka_snp" name="medaka_snp" version="@VERSION@+galaxy0" profile="19.01">
     <description>Call variants against a reference .fasta from a medaka consensus .hdf file</description>
     <macros>
         <token name="@VERSION@">0.11.5</token>

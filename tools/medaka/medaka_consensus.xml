@@ -1,4 +1,4 @@
-<tool id="medaka_consensus" name="medaka_consensus" version="@VERSION@" profile="19.01">
+<tool id="medaka_consensus" name="medaka_consensus" version="@VERSION@+galaxy0" profile="19.01">
     <description>Creates a consensus sequence from an alignment generated from nanopore sequence data</description>
     <macros>
         <token name="@VERSION@">0.11.5</token>
