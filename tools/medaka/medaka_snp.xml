@@ -1,0 +1,31 @@
+<tool id="medaka_snp" name="medaka_snp" version="@VERSION@" profile="19.01">
+    <description>Call variants against a reference .fasta from a medaka consensus .hdf file</description>
+    <macros>
+        <token name="@VERSION@">0.11.5</token>
+    </macros>
+    <requirements>
+        <requirement type="package" version="@VERSION@">medaka</requirement>
+    </requirements>
+    <version_command>medaka --version</version_command>
+    <command detect_errors="exit_code"><![CDATA[
+        medaka snp 
+          --threshold '${variant_threshold}'
+          '${ref_fasta}'
+          '${consensus_hdf}'
+          '${output_vcf}'
+          > '${log}'
+    ]]></command>
+    <inputs>
+        <param name="ref_fasta" type="data" format="fasta" label="Reference Sequence (.fasta)"/>
+        <param name="consensus_hdf" type="data" format="binary" label="Medaka consensus (.hdf)"/>
+        <param name="variant_threshold" type="float" value="0.04" min="0.0" max="1.0" />
+    </inputs>
+    <outputs>
+        <data name="output_vcf" format="vcf" label="${tool.name} on ${on_string}: Variants (.vcf)" />
+        <data name="log" format="txt" label="${tool.name} on ${on_string}: Log" />
+    </outputs>
+    <tests>
+    </tests>
+    <help><![CDATA[
+    ]]></help>
+</tool>

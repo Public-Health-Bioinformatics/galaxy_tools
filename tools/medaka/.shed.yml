@@ -1,0 +1,16 @@
+---
+categories:
+- Sequence Analysis
+owner: public-health-bioinformatics
+homepage_url: https://github.com/nanoporetech/medaka
+long_description: |
+  Sequence correction provided by ONT Research
+remote_repository_url: https://github.com/public-health-bioinformatics/galaxytools/tree/master/tools/medaka
+type: unrestricted
+auto_tool_repositories:
+  name_template: "{{ tool_id }}"
+  description_template: "Medaka suite: {{ tool_name }}."
+suite:
+  name: "suite_medaka"
+  description: "Suite of tools for sequence correction provided by ONT Research"
+  type: repository_suite_definition
