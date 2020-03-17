@@ -1,0 +1,10 @@
+categories:
+- Sequence Analysis
+description: 'Get Primer Scheme .bed Files'
+long_description: |
+  Get Primer Scheme .bed File from primer_scheme_bedfiles tool data table
+name: get_primer_scheme_bedfiles
+owner: public-health-bioinformatics
+remote_repository_url: https://github.com/public-health-bioinformatics/galaxy_tools/blob/master/tools/get_primer_scheme_bedfiles
+homepage_url: https://github.com/public-health-bioinformatics/galaxy_tools/blob/master/tools/get_primer_scheme_bedfiles
+type: unrestricted

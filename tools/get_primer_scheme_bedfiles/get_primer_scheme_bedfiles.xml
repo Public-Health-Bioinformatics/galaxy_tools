@@ -1,0 +1,24 @@
+<tool id="get_primer_scheme_bedfiles" name="Get Primer Scheme .bed Files" version="0.1.0+galaxy0">
+    <description>Get Primer Scheme .bed File from primer_scheme_bedfiles tool data table</description>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        ln -s '${primer_scheme_bedfile.fields.path}' primer_scheme.bed
+    ]]></command>
+    <inputs>
+        <param name="primer_scheme_bedfile" type="select" format="bed" label="Primer Scheme">
+	    <options from_data_table="primer_scheme_bedfiles">
+	        <validator type="no_options" message="No primer scheme .bed files are available" />
+            </options>
+	</param>
+    </inputs>
+    <outputs>
+        <data name="primer_scheme_bedfile" format="bed" from_workdir="primer_scheme.bed" label="Primer Scheme" />
+    </outputs>
+    <tests>
+    </tests>
+    <help><![CDATA[
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

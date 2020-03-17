@@ -1,0 +1,6 @@
+# Tab separated with three columns:
+# - value (Galaxy records this in the Galaxy DB)
+# - name (Galaxy shows this in the UI)
+# - path (Path to the primer scheme .bed file)
+#
+nCoV-2019-V1	"ARTIC nCoV-2019 V1 Primer Scheme File"	${__HERE__}/nCoV-2019/V1/nCoV-2019.scheme.bed
