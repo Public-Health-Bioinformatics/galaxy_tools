@@ -2,7 +2,8 @@
 
 # Written by Nick Loman
 # This file adapted from ARTICnetwork 'fieldbioinformatics' pipeline:
-# https://github.com/artic-network/fieldbioinformatics
+# https://github.com/artic-network/fieldbioinformatics/blob/master/artic/margin_cons_medaka.py
+# https://github.com/artic-network/fieldbioinformatics/blob/master/artic/vcftagprimersites.py
 
 import argparse
 import operator

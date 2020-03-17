@@ -1,4 +1,4 @@
-<tool id="artic_margin_cons_medaka" name="ARTIC margin_cons_medaka" version="0.1.0+galaxy0">
+<tool id="artic_margin_cons_medaka" name="ARTIC margin_cons_medaka" version="0.1.0-1005a47+galaxy0">
     <description>Generate consensus fasta file from a reference fasta, bam alignment and VCF file</description>
     <requirements>
         <requirement type="package" version="0.6.8">pyvcf</requirement>
@@ -6,14 +6,15 @@
         <requirement type="package" version="1.9">samtools</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        ln -s '${input_alignment}' alignment.bam &&
-        samtools index alignment.bam &&
+        ln -s '${input_alignment}' '${input_alignment.element_identifier}.bam' &&
+        samtools index '${input_alignment.element_identifier}.bam' &&
+        ln -s '${input_variants}' '${input_variants.element_identifier}.vcf' &&
         python '${__tool_directory__}/margin_cons_medaka.py'
           --depth '${minimum_depth}'
           --quality '${minimum_quality}'
           '${ref_fasta}'
-          '${input_variants}'
-          alignment.bam
+          '${input_variants.element_identifier}.vcf'
+          '${input_alignment.element_identifier}.bam'
           > '${consensus_fasta}'
           2> '${report}'
     ]]></command>
