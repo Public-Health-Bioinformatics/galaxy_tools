@@ -3,17 +3,17 @@
     <requirements>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        ln -s '${primer_scheme_bedfile.fields.path}' primer_scheme.bed
+        cp '${input_primer_scheme_bedfile.fields.path}' '${output_primer_scheme_bedfile}'
     ]]></command>
     <inputs>
-        <param name="primer_scheme_bedfile" type="select" format="bed" label="Primer Scheme">
+        <param name="input_primer_scheme_bedfile" type="select" format="bed" label="Primer Scheme">
 	    <options from_data_table="primer_scheme_bedfiles">
 	        <validator type="no_options" message="No primer scheme .bed files are available" />
             </options>
 	</param>
     </inputs>
     <outputs>
-        <data name="primer_scheme_bedfile" format="bed" from_workdir="primer_scheme.bed" label="Primer Scheme" />
+        <data name="output_primer_scheme_bedfile" format="bed" label="Primer Scheme" />
     </outputs>
     <tests>
     </tests>
