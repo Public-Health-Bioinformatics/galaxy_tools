@@ -5,8 +5,13 @@
         <requirement type="package" version="1.9">samtools</requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
+        #if str( $primer_scheme_source.primer_scheme_source_selector ) == "tool_data_table":
+          #set $primer_scheme = str( $primer_scheme_source.primer_scheme_bedfile.fields.path )
+        #else:
+          #set $primer_scheme = str( $primer_scheme_source.primer_scheme_bedfile )
+        #end if
         python '${__tool_directory__}/align_trim.py'
-            '${primer_scheme_bedfile.fields.path}'
+            '${primer_scheme}'
             --start 
             --report '${start_trim_report}'
             < '${input_alignment}'
@@ -14,7 +19,7 @@
         samtools view -bS - |
         samtools sort - -o '${start_trimmed_sorted_alignment}' &&
         python '${__tool_directory__}/align_trim.py'
-            '${primer_scheme_bedfile.fields.path}'
+            '${primer_scheme}'
             --report '${end_trim_report}'
             < '${input_alignment}'
             2> '${end_trim_err}' |
@@ -23,11 +28,23 @@
     ]]></command>
     <inputs>
         <param name="input_alignment" type="data" format="bam" label="Input Alignment"/>
-        <param name="primer_scheme_bedfile" type="select" format="bed" label="Primer Scheme">
-	    <options from_data_table="primer_scheme_bedfiles">
-	        <validator type="no_options" message="No primer scheme .bed files are available" />
-            </options>
-	</param>
+        <conditional name="primer_scheme_source">
+            <param name="primer_scheme_source_selector" type="select" label="Select a primer scheme from your history or use one from a tool data table?"
+                   help="Screening files must be stored in the 'primer_scheme_bedfiles' tool data table">
+                <option value="tool_data_table">From tool data table</option>
+                <option value="history">From history</option>
+            </param>
+            <when value="tool_data_table">
+                <param name="primer_scheme_bedfile" type="select" format="bed" label="Primer Scheme">
+	            <options from_data_table="primer_scheme_bedfiles">
+	                <validator type="no_options" message="No primer scheme .bed files are available" />
+                    </options>
+	        </param>
+            </when>
+            <when value="history">
+                <param name="primer_scheme_bedfile" type="data" format="bed" label="Primer Scheme" />
+            </when>
+        </conditional>
     </inputs>
     <outputs>
         <data name="start_trim_report" format="tabular" label="Report (Trim to start of primers)" />
