@@ -1,0 +1,28 @@
+<tool id="primer_scheme_to_amplicon_intervals" name="Primer Scheme to Amplicon Intervals" version="0.1.0+galaxy0">
+    <description>
+        Primer Scheme to Amplicon Intervals
+    </description>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code">
+        <![CDATA[
+          python '${__tool_directory__}/primer_scheme_to_amplicon_intervals.py'
+            '${primer_scheme}'
+            > '${amplicon_intervals}'
+        ]]>
+    </command>
+    <inputs>
+        <param name="primer_scheme" type="data" format="bed" label="Primer Scheme" />
+    </inputs>
+    <outputs>
+        <data name="amplicon_intervals" label="Amplicon Intervals" format="bed" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="primer_scheme" value="nCoV-2019.scheme.bed" />
+            <output name="amplicon_intervals" value="nCoV-2019.amplicons.bed" />
+        </test>
+    </tests>
+    <help><![CDATA[
+    ]]></help>
+</tool>
