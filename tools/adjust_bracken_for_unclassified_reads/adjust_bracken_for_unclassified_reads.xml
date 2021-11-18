@@ -1,0 +1,26 @@
+<tool id="adjust_bracken_for_unclassified_reads" name="Adjust Bracken Report for Unclassified Reads" version="0.1.0">
+    <description>Adjust bracken report to account for unclassified reads</description>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        '$__tool_directory__/adjust_bracken_for_unclassified_reads.py'
+        --kraken-report '${kraken_report}'
+	--bracken-report '${bracken_report}'
+        --bracken-abundances '${bracken_abundances}'
+        > ${adjusted_bracken_report}
+    ]]></command>
+    <inputs>
+        <param name="kraken_report" type="data" format="txt" />
+        <param name="bracken_report" type="data" format="txt" />
+        <param name="bracken_abundances" type="data" format="txt" />
+    </inputs>
+    <outputs>
+        <data name="adjusted_bracken_report" label="Adjusted Report" format="txt"/>
+    </outputs>
+    <tests>
+    </tests>
+    <help><![CDATA[
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
