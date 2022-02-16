@@ -73,11 +73,12 @@ def main(args):
         'fraction_total_reads',
     ]
 
-    writer = csv.DictWriter(sys.stdout, fieldnames=output_fieldnames)
+    writer = csv.DictWriter(sys.stdout, fieldnames=output_fieldnames, dialect='excel-tab')
     writer.writeheader()
     
     for b in bracken_abundances:
-        b['fraction_total_reads'] = round(float(b['new_est_reads']) / float(adjusted_total_reads) * 100, 5)
+        adjusted_fraction_total_reads = float(b['new_est_reads']) / float(adjusted_total_reads) 
+        b['fraction_total_reads'] = '{:.5f}'.format(adjusted_fraction_total_reads)
         writer.writerow(b)
     
 if __name__ == '__main__':

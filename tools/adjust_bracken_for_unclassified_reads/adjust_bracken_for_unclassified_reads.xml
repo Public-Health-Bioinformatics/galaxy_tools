@@ -18,6 +18,18 @@
         <data name="adjusted_bracken_report" label="Adjusted Report" format="txt"/>
     </outputs>
     <tests>
+        <test>
+	    <param name="kraken_report" value="input/SRR17619849_kraken2.txt"/>
+	    <param name="bracken_report" value="input/SRR17619849_bracken_report.txt"/>
+	    <param name="bracken_abundances" value="input/SRR17619849_bracken_abundances.tsv"/>
+	    <output name="adjusted_bracken_report" file="output/SRR17619849_bracken_abundances_adjusted.tsv" ftype="tabular"/>
+        </test>
+	<test>
+	    <param name="kraken_report" value="input/SRR17907745_kraken2.txt"/>
+	    <param name="bracken_report" value="input/SRR17907745_bracken_report.txt"/>
+	    <param name="bracken_abundances" value="input/SRR17907745_bracken_abundances.tsv"/>
+	    <output name="adjusted_bracken_report" file="output/SRR17907745_bracken_abundances_adjusted.tsv" ftype="tabular"/>
+        </test>
     </tests>
     <help><![CDATA[
     ]]></help>

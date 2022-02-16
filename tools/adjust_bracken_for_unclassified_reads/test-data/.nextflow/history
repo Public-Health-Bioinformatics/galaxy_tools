@@ -1,0 +1,1 @@
+2022-02-16 08:50:07	3m 12s	gigantic_lumiere	OK	712c77384298cd9b97835198e7ef8595d6ff82e2	687a3936-7817-459a-a70c-8d392328d12b	nextflow run BCCDC-PHL/taxon-abundance -r main -profile conda --cache /home/dfornika/.conda/envs --fastq_input . --outdir .

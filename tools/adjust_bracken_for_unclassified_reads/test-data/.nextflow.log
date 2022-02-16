@@ -1,0 +1,125 @@
+Feb-16 08:50:02.786 [main] DEBUG nextflow.cli.Launcher - $> nextflow run BCCDC-PHL/taxon-abundance -r main -profile conda --cache /home/dfornika/.conda/envs --fastq_input . --outdir .
+Feb-16 08:50:02.897 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.12.1-edge
+Feb-16 08:50:04.299 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/dfornika/.nextflow/assets/BCCDC-PHL/taxon-abundance/.git/config; branch: master; remote: origin; url: https://github.com/BCCDC-PHL/taxon-abundance.git
+Feb-16 08:50:04.318 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/dfornika/.nextflow/assets/BCCDC-PHL/taxon-abundance/.git/config; branch: master; remote: origin; url: https://github.com/BCCDC-PHL/taxon-abundance.git
+Feb-16 08:50:05.906 [main] INFO  nextflow.cli.CmdRun - Launching `BCCDC-PHL/taxon-abundance` [gigantic_lumiere] - revision: 712c773842 [main]
+Feb-16 08:50:06.553 [main] DEBUG nextflow.config.ConfigBuilder - Found config home: /home/dfornika/.nextflow/config
+Feb-16 08:50:06.553 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /home/dfornika/.nextflow/assets/BCCDC-PHL/taxon-abundance/nextflow.config
+Feb-16 08:50:06.555 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/dfornika/.nextflow/config
+Feb-16 08:50:06.555 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/dfornika/.nextflow/assets/BCCDC-PHL/taxon-abundance/nextflow.config
+Feb-16 08:50:06.565 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `conda`
+Feb-16 08:50:06.616 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `conda`
+Feb-16 08:50:06.681 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [conda]
+Feb-16 08:50:06.746 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/home/dfornika/.nextflow/plugins
+Feb-16 08:50:06.781 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Feb-16 08:50:06.816 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Feb-16 08:50:06.820 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Feb-16 08:50:06.825 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Feb-16 08:50:06.839 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Feb-16 08:50:06.839 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-tower version: 1.3.0
+Feb-16 08:50:06.955 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-tower@1.3.0' resolved
+Feb-16 08:50:06.955 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-tower@1.3.0'
+Feb-16 08:50:07.021 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-tower@1.3.0
+Feb-16 08:50:07.190 [main] DEBUG nextflow.Session - Session uuid: 687a3936-7817-459a-a70c-8d392328d12b
+Feb-16 08:50:07.190 [main] DEBUG nextflow.Session - Run name: gigantic_lumiere
+Feb-16 08:50:07.191 [main] DEBUG nextflow.Session - Executor pool size: 32
+Feb-16 08:50:07.219 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.12.1-edge build 5653
+  Created: 22-12-2021 07:53 UTC (21-12-2021 23:53 PDT)
+  System: Linux 3.10.0-957.5.1.el7.x86_64
+  Runtime: Groovy 3.0.9 on OpenJDK 64-Bit Server VM 11.0.1+13-LTS
+  Encoding: UTF-8 (UTF-8)
+  Process: 23816@sabin.bccdc-phl.ca [10.9.235.161]
+  CPUs: 32 - Mem: 125.6 GB (18.7 GB) - Swap: 8 GB (2 GB)
+Feb-16 08:50:07.325 [main] DEBUG nextflow.Session - Work-dir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work [nfs]
+Feb-16 08:50:07.345 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Feb-16 08:50:07.361 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Feb-16 08:50:07.364 [main] DEBUG nextflow.Session - Observer factory: TowerFactory
+Feb-16 08:50:07.566 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 33; maxThreads: 1000
+Feb-16 08:50:07.879 [main] DEBUG nextflow.Session - Session start invoked
+Feb-16 08:50:08.262 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Feb-16 08:50:08.741 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 33; maxThreads: 1000
+Feb-16 08:50:08.952 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: sge
+Feb-16 08:50:08.953 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'sge'
+Feb-16 08:50:08.964 [main] DEBUG nextflow.executor.Executor - [warm up] executor > sge
+Feb-16 08:50:08.972 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'sge' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Feb-16 08:50:08.978 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'sge' > queue-stat-interval: 1m
+Feb-16 08:50:09.079 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Feb-16 08:50:09.079 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Feb-16 08:50:09.082 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Feb-16 08:50:09.086 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=32; memory=125.6 GB; capacity=32; pollInterval=100ms; dumpInterval=5m
+Feb-16 08:50:09.160 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:kraken2` matches process kraken2
+Feb-16 08:50:09.161 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: sge
+Feb-16 08:50:09.161 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'sge'
+Feb-16 08:50:09.171 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: sge
+Feb-16 08:50:09.171 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'sge'
+Feb-16 08:50:09.178 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Feb-16 08:50:09.178 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Feb-16 08:50:09.187 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: bracken, kraken2, fastp_json_to_csv, abundance_top_5, fastp
+Feb-16 08:50:09.187 [main] DEBUG nextflow.Session - Ignite dataflow network (8)
+Feb-16 08:50:09.196 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_R{1,2}_001.fastq.gz; options: [:]
+Feb-16 08:50:09.198 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > fastp
+Feb-16 08:50:09.199 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > fastp_json_to_csv
+Feb-16 08:50:09.200 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > kraken2
+Feb-16 08:50:09.200 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > bracken
+Feb-16 08:50:09.201 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > abundance_top_5
+Feb-16 08:50:09.201 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Feb-16 08:50:09.202 [main] DEBUG nextflow.Session - Session await
+Feb-16 08:50:09.219 [PathVisitor-2] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_R{1,2}_001.fq.gz; options: [syntax:glob, type:file]
+Feb-16 08:50:09.228 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_R{1,2}_001.fastq; options: [syntax:glob, type:file]
+Feb-16 08:50:09.238 [PathVisitor-2] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_R{1,2}_001.fq; options: [syntax:glob, type:file]
+Feb-16 08:50:09.247 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_R{1,2}.fastq.gz; options: [syntax:glob, type:file]
+Feb-16 08:50:09.257 [PathVisitor-2] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_R{1,2}.fq.gz; options: [syntax:glob, type:file]
+Feb-16 08:50:09.266 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_R{1,2}.fastq; options: [syntax:glob, type:file]
+Feb-16 08:50:09.274 [PathVisitor-2] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_R{1,2}.fq; options: [syntax:glob, type:file]
+Feb-16 08:50:09.282 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_{1,2}.fastq.gz; options: [syntax:glob, type:file]
+Feb-16 08:50:09.291 [PathVisitor-2] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_{1,2}.fq.gz; options: [syntax:glob, type:file]
+Feb-16 08:50:09.299 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_{1,2}.fastq; options: [syntax:glob, type:file]
+Feb-16 08:50:09.307 [PathVisitor-2] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: ./; pattern: *_{1,2}.fq; options: [syntax:glob, type:file]
+Feb-16 08:50:09.531 [Actor Thread 31] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/home/dfornika/.nextflow/assets/BCCDC-PHL/taxon-abundance/environments/environment.yml; path=/home/dfornika/.conda/envs/species-abundance-e00792746672c5db163b792912485cd9
+Feb-16 08:50:09.923 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SGE] submitted process fastp (SRR17619849) > jobId: 6404244; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/34/8ff96dafc94afb277341ab67263599
+Feb-16 08:50:09.930 [Task submitter] INFO  nextflow.Session - [34/8ff96d] Submitted process > fastp (SRR17619849)
+Feb-16 08:50:10.031 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SGE] submitted process fastp (SRR17907745) > jobId: 6404245; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/25/7842a1035a2c6aa288e43c7ab9a451
+Feb-16 08:50:10.031 [Task submitter] INFO  nextflow.Session - [25/7842a1] Submitted process > fastp (SRR17907745)
+Feb-16 08:51:18.997 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 6404244; id: 1; name: fastp (SRR17619849); status: COMPLETED; exit: 0; error: -; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/34/8ff96dafc94afb277341ab67263599 started: 1645030243987; exited: 2022-02-16T16:51:33.252348Z; ]
+Feb-16 08:51:19.035 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 6404245; id: 2; name: fastp (SRR17907745); status: COMPLETED; exit: 0; error: -; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/25/7842a1035a2c6aa288e43c7ab9a451 started: 1645030244002; exited: 2022-02-16T16:51:44.189198Z; ]
+Feb-16 08:51:19.055 [Actor Thread 35] DEBUG nextflow.util.CacheHelper - Hash asset file sha-256: /home/dfornika/.nextflow/assets/BCCDC-PHL/taxon-abundance/bin/fastp_json_to_csv.py
+Feb-16 08:51:19.156 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Feb-16 08:51:19.163 [Task submitter] INFO  nextflow.Session - [32/dc8738] Submitted process > fastp_json_to_csv (SRR17619849)
+Feb-16 08:51:19.310 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Feb-16 08:51:19.311 [Task submitter] INFO  nextflow.Session - [e7/fd82c3] Submitted process > fastp_json_to_csv (SRR17907745)
+Feb-16 08:51:19.351 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SGE] submitted process kraken2 (SRR17619849) > jobId: 6404246; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/e1/2259843c4280c8bf505c69d751513d
+Feb-16 08:51:19.352 [Task submitter] INFO  nextflow.Session - [e1/225984] Submitted process > kraken2 (SRR17619849)
+Feb-16 08:51:19.495 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SGE] submitted process kraken2 (SRR17907745) > jobId: 6404247; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/a8/20043b716a54c6559841d92bebd918
+Feb-16 08:51:19.496 [Task submitter] INFO  nextflow.Session - [a8/20043b] Submitted process > kraken2 (SRR17907745)
+Feb-16 08:51:31.433 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: fastp_json_to_csv (SRR17619849); status: COMPLETED; exit: 0; error: -; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/32/dc873892553f6515e8302cdb48a4d9]
+Feb-16 08:51:31.458 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: fastp_json_to_csv (SRR17907745); status: COMPLETED; exit: 0; error: -; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/e7/fd82c3bfc9c548a89c32a12b90f567]
+Feb-16 08:51:31.502 [Actor Thread 27] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 2; slices: 1; internal sort time: 0.028 s; external sort time: 0.002 s; total time: 0.03 s
+Feb-16 08:51:31.584 [Actor Thread 27] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /tmp/d84d1d5b958df051ac827daa652d51a1.collect-file
+Feb-16 08:51:31.601 [Actor Thread 27] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-3097713238516457594
+Feb-16 08:52:33.996 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 6404246; id: 4; name: kraken2 (SRR17619849); status: COMPLETED; exit: 0; error: -; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/e1/2259843c4280c8bf505c69d751513d started: 1645030284016; exited: 2022-02-16T16:52:52.756278Z; ]
+Feb-16 08:52:34.014 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 6404247; id: 6; name: kraken2 (SRR17907745); status: COMPLETED; exit: 0; error: -; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/a8/20043b716a54c6559841d92bebd918 started: 1645030284020; exited: 2022-02-16T16:52:58.025207Z; ]
+Feb-16 08:52:34.053 [Actor Thread 27] DEBUG nextflow.util.CacheHelper - Hash asset file sha-256: /home/dfornika/.nextflow/assets/BCCDC-PHL/taxon-abundance/bin/adjust_bracken_percentages_for_unclassified_reads.py
+Feb-16 08:52:34.226 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SGE] submitted process bracken (SRR17907745 / S) > jobId: 6404248; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/9d/951443e96eebe991d65b56f73bbd78
+Feb-16 08:52:34.226 [Task submitter] INFO  nextflow.Session - [9d/951443] Submitted process > bracken (SRR17907745 / S)
+Feb-16 08:52:34.314 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SGE] submitted process bracken (SRR17619849 / S) > jobId: 6404249; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/6e/bf525e431f561eb96cca325fc022dd
+Feb-16 08:52:34.315 [Task submitter] INFO  nextflow.Session - [6e/bf525e] Submitted process > bracken (SRR17619849 / S)
+Feb-16 08:53:08.998 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 6404248; id: 8; name: bracken (SRR17907745 / S); status: COMPLETED; exit: 0; error: -; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/9d/951443e96eebe991d65b56f73bbd78 started: 1645030388990; exited: 2022-02-16T16:53:29.965278Z; ]
+Feb-16 08:53:09.022 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 6404249; id: 7; name: bracken (SRR17619849 / S); status: COMPLETED; exit: 0; error: -; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/6e/bf525e431f561eb96cca325fc022dd started: 1645030389010; exited: 2022-02-16T16:53:22.643378Z; ]
+Feb-16 08:53:09.029 [Actor Thread 27] DEBUG nextflow.util.CacheHelper - Hash asset file sha-256: /home/dfornika/.nextflow/assets/BCCDC-PHL/taxon-abundance/bin/bracken_top_n_linelist.py
+Feb-16 08:53:09.092 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Feb-16 08:53:09.093 [Task submitter] INFO  nextflow.Session - [42/11af25] Submitted process > abundance_top_5 (SRR17907745 / S)
+Feb-16 08:53:09.104 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Feb-16 08:53:09.105 [Task submitter] INFO  nextflow.Session - [19/66d45e] Submitted process > abundance_top_5 (SRR17619849 / S)
+Feb-16 08:53:17.057 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 9; name: abundance_top_5 (SRR17907745 / S); status: COMPLETED; exit: 0; error: -; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/42/11af2510474ef3d3ec1d28d4c190ba]
+Feb-16 08:53:17.096 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 10; name: abundance_top_5 (SRR17619849 / S); status: COMPLETED; exit: 0; error: -; workDir: /home/dfornika/code/phb_galaxy_tools/tools/adjust_bracken_for_unclassified_reads/test-data/work/19/66d45e437bb8d7072e01c398b09f3a]
+Feb-16 08:53:17.100 [main] DEBUG nextflow.Session - Session await > all process finished
+Feb-16 08:53:17.110 [Actor Thread 29] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 2; slices: 1; internal sort time: 0.006 s; external sort time: 0.001 s; total time: 0.007 s
+Feb-16 08:53:17.126 [Actor Thread 29] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /tmp/cd9884f34ebd1a0251cb704c27ac6639.collect-file
+Feb-16 08:53:17.128 [Actor Thread 29] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-10840038303477748765
+Feb-16 08:53:18.984 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Feb-16 08:53:18.994 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=10; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=20m 30s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=4; peakCpus=18; peakMemory=0; ]
+Feb-16 08:53:19.203 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Feb-16 08:53:19.204 [main] INFO  org.pf4j.AbstractPluginManager - Stop plugin 'nf-tower@1.3.0'
+Feb-16 08:53:19.204 [main] DEBUG nextflow.plugin.BasePlugin - Plugin stopped nf-tower
+Feb-16 08:53:19.243 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
