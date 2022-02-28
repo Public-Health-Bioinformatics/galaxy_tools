@@ -42,14 +42,13 @@ def parse_kraken_report(kraken_report_path):
 
 def main(args):
     kraken_report = parse_kraken_report(args.kraken_report)
-    bracken_report = parse_kraken_report(args.bracken_report) # bracken report has same format as kraken report
     bracken_abundances = parse_bracken_abundances(args.bracken_abundances)
 
-    bracken_report_total_reads = list(filter(lambda x: x['taxon_name'] == 'root', bracken_report))[0]['reads_total']
     kraken_report_unclassified_reads = list(filter(lambda x: x['taxon_name'] == 'unclassified', kraken_report))[0]['reads_this_level']
+    kraken_report_classified_reads = list(filter(lambda x: x['taxon_name'] == 'root', kraken_report))[0]['reads_total']
 
-    adjusted_total_reads = bracken_report_total_reads + kraken_report_unclassified_reads
-    percent_unclassified = float(kraken_report_unclassified_reads) / float(adjusted_total_reads)
+    total_reads = kraken_report_classified_reads + kraken_report_unclassified_reads
+    percent_unclassified = float(kraken_report_unclassified_reads) / float(total_reads)
 
     bracken_unclassified_entry = {
         'name': 'unclassified',
@@ -77,14 +76,13 @@ def main(args):
     writer.writeheader()
     
     for b in bracken_abundances:
-        adjusted_fraction_total_reads = float(b['new_est_reads']) / float(adjusted_total_reads) 
+        adjusted_fraction_total_reads = float(b['new_est_reads']) / float(total_reads) 
         b['fraction_total_reads'] = '{:.5f}'.format(adjusted_fraction_total_reads)
         writer.writerow(b)
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-k', '--kraken-report')
-    parser.add_argument('-b', '--bracken-report')
     parser.add_argument('-a', '--bracken-abundances')
     args = parser.parse_args()
     main(args)
