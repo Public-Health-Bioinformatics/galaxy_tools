@@ -17,7 +17,7 @@ def parse_bracken_abundances(bracken_abundances_path):
             b['kraken_assigned_reads'] = int(row['kraken_assigned_reads'])
             b['added_reads'] = int(row['added_reads'])
             b['new_est_reads'] = int(row['new_est_reads'])
-            b['fraction_total_reads'] = float(row['fraction_total_reads'])
+            b['bracken_fraction_total_reads'] = float(row['fraction_total_reads'])
             bracken_abundances.append(b)
 
     return bracken_abundances
@@ -57,7 +57,8 @@ def main(args):
         'kraken_assigned_reads': kraken_report_unclassified_reads,
         'added_reads': 0,
         'new_est_reads': kraken_report_unclassified_reads,
-        'fraction_total_reads': percent_unclassified,
+        'kraken_fraction_total_reads': percent_unclassified,
+        'bracken_fraction_total_reads': 0.0,
     }
 
     bracken_abundances = [bracken_unclassified_entry] + bracken_abundances
@@ -69,17 +70,25 @@ def main(args):
         'kraken_assigned_reads',
         'added_reads',
         'new_est_reads',
-        'fraction_total_reads',
+        'total_reads',
+        'kraken_fraction_total_reads',
+        'bracken_fraction_total_reads',
     ]
 
     writer = csv.DictWriter(sys.stdout, fieldnames=output_fieldnames, dialect='excel-tab')
     writer.writeheader()
     
     for b in bracken_abundances:
-        adjusted_fraction_total_reads = float(b['new_est_reads']) / float(total_reads) 
-        b['fraction_total_reads'] = '{:.5f}'.format(adjusted_fraction_total_reads)
+        b['total_reads'] = total_reads
+        kraken_adjusted_fraction_total_reads = float(b['kraken_assigned_reads']) / float(total_reads)
+        b['kraken_fraction_total_reads'] = '{:.6f}'.format(kraken_adjusted_fraction_total_reads)
+        bracken_adjusted_fraction_total_reads = float(b['new_est_reads']) / float(total_reads)
+        b['bracken_fraction_total_reads'] = '{:.6f}'.format(bracken_adjusted_fraction_total_reads)
+
+    for b in sorted(bracken_abundances, key=lambda x: x['bracken_fraction_total_reads'], reverse=True):
         writer.writerow(b)
-    
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-k', '--kraken-report')
