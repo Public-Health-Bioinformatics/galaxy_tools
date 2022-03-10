@@ -15,8 +15,7 @@ def parse_bracken_abundances(bracken_abundances_path):
             b['taxonomy_id'] = row['taxonomy_id']
             b['taxonomy_lvl'] = row['taxonomy_lvl']
             b['kraken_assigned_reads'] = int(row['kraken_assigned_reads'])
-            b['added_reads'] = int(row['added_reads'])
-            b['new_est_reads'] = int(row['new_est_reads'])
+            b['bracken_assigned_reads'] = int(row['new_est_reads'])
             b['bracken_fraction_total_reads'] = float(row['fraction_total_reads'])
             bracken_abundances.append(b)
 
@@ -55,8 +54,7 @@ def main(args):
         'taxonomy_id': 0,
         'taxonomy_lvl': 'U',
         'kraken_assigned_reads': kraken_report_unclassified_reads,
-        'added_reads': 0,
-        'new_est_reads': kraken_report_unclassified_reads,
+        'bracken_assigned_reads': kraken_report_unclassified_reads,
         'kraken_fraction_total_reads': percent_unclassified,
         'bracken_fraction_total_reads': 0.0,
     }
@@ -68,8 +66,7 @@ def main(args):
         'taxonomy_id',
         'taxonomy_lvl',
         'kraken_assigned_reads',
-        'added_reads',
-        'new_est_reads',
+        'bracken_assigned_reads',
         'total_reads',
         'kraken_fraction_total_reads',
         'bracken_fraction_total_reads',
@@ -82,7 +79,7 @@ def main(args):
         b['total_reads'] = total_reads
         kraken_adjusted_fraction_total_reads = float(b['kraken_assigned_reads']) / float(total_reads)
         b['kraken_fraction_total_reads'] = '{:.6f}'.format(kraken_adjusted_fraction_total_reads)
-        bracken_adjusted_fraction_total_reads = float(b['new_est_reads']) / float(total_reads)
+        bracken_adjusted_fraction_total_reads = float(b['bracken_assigned_reads']) / float(total_reads)
         b['bracken_fraction_total_reads'] = '{:.6f}'.format(bracken_adjusted_fraction_total_reads)
 
     for b in sorted(bracken_abundances, key=lambda x: x['bracken_fraction_total_reads'], reverse=True):
