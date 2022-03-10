@@ -1,0 +1,33 @@
+<tool id="fastp_json_to_tabular" name="Convert fastp json report to tabular" version="0.1.0">
+    <description>Convert fastp json report to tabular</description>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        '$__tool_directory__/fastp_json_to_tabular.py'
+          ${report} > ${output}
+    ]]></command>
+    <inputs>
+        <param name="report" type="data" format="json" />
+    </inputs>
+    <outputs>
+        <data name="output" label="fastp report" format="tabular"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="report" value="test-01_fastp.json" />
+            <output name="output" file="test-01_fastp.tsv" ftype="tabular" />
+        </test>
+        <test>
+            <param name="report" value="test-02_fastp.json" />
+            <output name="output" file="test-02_fastp.tsv" ftype="tabular" />
+        </test>
+        <test>
+            <param name="report" value="test-03_fastp.json" />
+            <output name="output" file="test-03_fastp.tsv" ftype="tabular" />
+        </test>
+    </tests>
+    <help><![CDATA[
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
