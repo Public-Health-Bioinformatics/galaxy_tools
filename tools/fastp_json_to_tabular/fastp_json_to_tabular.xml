@@ -1,9 +1,10 @@
 <tool id="fastp_json_to_tabular" name="Convert fastp json report to tabular" version="0.1.0">
-    <description>Pick plasmids containing specific genes</description>
+    <description>Convert fastp json report to tabular</description>
     <requirements>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        '$__tool_directory__/fastp_json_to_tsv.py'
+        '$__tool_directory__/fastp_json_to_tabular.py'
+          ${report} > ${output}
     ]]></command>
     <inputs>
         <param name="report" type="data" format="json" />
