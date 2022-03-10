@@ -10,8 +10,8 @@ def main(args):
     reads_single_paired = fastp_report['summary']['sequencing'].split(' ')[0]
 
     if reads_single_paired == 'paired':
-        total_read_pairs_before_filtering = str(int(fastp_report['summary']['before_filtering']['total_reads']) / 2)
-        total_read_pairs_after_filtering = str(int(fastp_report['summary']['after_filtering']['total_reads']) / 2)
+        total_read_pairs_before_filtering = str(int(int(fastp_report['summary']['before_filtering']['total_reads']) / 2))
+        total_read_pairs_after_filtering = str(int(int(fastp_report['summary']['after_filtering']['total_reads']) / 2))
         read2_mean_length_before_filtering = fastp_report['summary']['before_filtering']['read2_mean_length']
         read2_mean_length_after_filtering = fastp_report['summary']['after_filtering']['read2_mean_length']
     else:
