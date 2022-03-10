@@ -14,9 +14,9 @@ def parse_bracken_abundances(bracken_abundances_path):
             b['name'] = row['name']
             b['taxonomy_id'] = row['taxonomy_id']
             b['taxonomy_lvl'] = row['taxonomy_lvl']
-            b['kraken_assigned_reads'] = int(row['kraken_assigned_reads'])
-            b['bracken_assigned_reads'] = int(row['new_est_reads'])
-            b['bracken_fraction_total_reads'] = float(row['fraction_total_reads'])
+            b['kraken_assigned_seqs'] = int(row['kraken_assigned_reads'])
+            b['bracken_assigned_seqs'] = int(row['new_est_reads'])
+            b['bracken_fraction_total_seqs'] = float(row['fraction_total_reads'])
             bracken_abundances.append(b)
 
     return bracken_abundances
@@ -27,10 +27,10 @@ def parse_kraken_report(kraken_report_path):
     with open(kraken_report_path, 'r') as f:
         for line in f:
             kraken_line = {}
-            [percentage, reads_total, reads_this_level, taxonomic_level, ncbi_taxid, taxon_name] = line.strip().split(None, 5)
+            [percentage, seqs_total, seqs_this_level, taxonomic_level, ncbi_taxid, taxon_name] = line.strip().split(None, 5)
             kraken_line['percentage'] = float(percentage)
-            kraken_line['reads_total'] = int(reads_total)
-            kraken_line['reads_this_level'] = int(reads_this_level)
+            kraken_line['seqs_total'] = int(seqs_total)
+            kraken_line['seqs_this_level'] = int(seqs_this_level)
             kraken_line['taxonomic_level'] = taxonomic_level
             kraken_line['ncbi_taxid'] = ncbi_taxid
             kraken_line['taxon_name'] = taxon_name
@@ -43,20 +43,20 @@ def main(args):
     kraken_report = parse_kraken_report(args.kraken_report)
     bracken_abundances = parse_bracken_abundances(args.bracken_abundances)
 
-    kraken_report_unclassified_reads = list(filter(lambda x: x['taxon_name'] == 'unclassified', kraken_report))[0]['reads_this_level']
-    kraken_report_classified_reads = list(filter(lambda x: x['taxon_name'] == 'root', kraken_report))[0]['reads_total']
+    kraken_report_unclassified_seqs = list(filter(lambda x: x['taxon_name'] == 'unclassified', kraken_report))[0]['seqs_this_level']
+    kraken_report_classified_seqs = list(filter(lambda x: x['taxon_name'] == 'root', kraken_report))[0]['seqs_total']
 
-    total_reads = kraken_report_classified_reads + kraken_report_unclassified_reads
-    percent_unclassified = float(kraken_report_unclassified_reads) / float(total_reads)
+    total_seqs = kraken_report_classified_seqs + kraken_report_unclassified_seqs
+    percent_unclassified = float(kraken_report_unclassified_seqs) / float(total_seqs)
 
     bracken_unclassified_entry = {
         'name': 'unclassified',
         'taxonomy_id': 0,
         'taxonomy_lvl': 'U',
-        'kraken_assigned_reads': kraken_report_unclassified_reads,
-        'bracken_assigned_reads': kraken_report_unclassified_reads,
-        'kraken_fraction_total_reads': percent_unclassified,
-        'bracken_fraction_total_reads': 0.0,
+        'kraken_assigned_seqs': kraken_report_unclassified_seqs,
+        'bracken_assigned_seqs': kraken_report_unclassified_seqs,
+        'kraken_fraction_total_seqs': percent_unclassified,
+        'bracken_fraction_total_seqs': 0.0,
     }
 
     bracken_abundances = [bracken_unclassified_entry] + bracken_abundances
@@ -65,24 +65,24 @@ def main(args):
         'name',
         'taxonomy_id',
         'taxonomy_lvl',
-        'kraken_assigned_reads',
-        'bracken_assigned_reads',
-        'total_reads',
-        'kraken_fraction_total_reads',
-        'bracken_fraction_total_reads',
+        'kraken_assigned_seqs',
+        'bracken_assigned_seqs',
+        'total_seqs',
+        'kraken_fraction_total_seqs',
+        'bracken_fraction_total_seqs',
     ]
 
     writer = csv.DictWriter(sys.stdout, fieldnames=output_fieldnames, dialect='excel-tab')
     writer.writeheader()
     
     for b in bracken_abundances:
-        b['total_reads'] = total_reads
-        kraken_adjusted_fraction_total_reads = float(b['kraken_assigned_reads']) / float(total_reads)
-        b['kraken_fraction_total_reads'] = '{:.6f}'.format(kraken_adjusted_fraction_total_reads)
-        bracken_adjusted_fraction_total_reads = float(b['bracken_assigned_reads']) / float(total_reads)
-        b['bracken_fraction_total_reads'] = '{:.6f}'.format(bracken_adjusted_fraction_total_reads)
+        b['total_seqs'] = total_seqs
+        kraken_adjusted_fraction_total_seqs = float(b['kraken_assigned_seqs']) / float(total_seqs)
+        b['kraken_fraction_total_seqs'] = '{:.6f}'.format(kraken_adjusted_fraction_total_seqs)
+        bracken_adjusted_fraction_total_seqs = float(b['bracken_assigned_seqs']) / float(total_seqs)
+        b['bracken_fraction_total_seqs'] = '{:.6f}'.format(bracken_adjusted_fraction_total_seqs)
 
-    for b in sorted(bracken_abundances, key=lambda x: x['bracken_fraction_total_reads'], reverse=True):
+    for b in sorted(bracken_abundances, key=lambda x: x['bracken_fraction_total_seqs'], reverse=True):
         writer.writerow(b)
 
 
