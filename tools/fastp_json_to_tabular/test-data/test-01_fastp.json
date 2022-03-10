@@ -408,5 +408,5 @@
 		"overrepresented_sequences": {
 		}
 	},
-	"command": "fastp -t 4 -i BC21A763A_R1.fastq.gz -I BC21A763A_R2.fastq.gz --cut_tail -o BC21A763A_R1.trim.fastq.gz -O BC21A763A_R2.trim.fastq.gz -j BC21A763A_fastp.json "
+	"command": "fastp -t 4 -i test-01_R1.fastq.gz -I test-01_R2.fastq.gz --cut_tail -o test-01_R1.trim.fastq.gz -O test-01_R2.trim.fastq.gz -j test-01_fastp.json "
 }
