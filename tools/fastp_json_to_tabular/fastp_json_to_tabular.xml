@@ -13,6 +13,18 @@
         <data name="output" label="fastp report" format="tabular"/>
     </outputs>
     <tests>
+        <test>
+            <param name="report" value="test-01_fastp.json" />
+            <output name="output" file="test-01_fastp.tsv" ftype="tabular" />
+        </test>
+        <test>
+            <param name="report" value="test-02_fastp.json" />
+            <output name="output" file="test-02_fastp.tsv" ftype="tabular" />
+        </test>
+        <test>
+            <param name="report" value="test-03_fastp.json" />
+            <output name="output" file="test-03_fastp.tsv" ftype="tabular" />
+        </test>
     </tests>
     <help><![CDATA[
     ]]></help>
