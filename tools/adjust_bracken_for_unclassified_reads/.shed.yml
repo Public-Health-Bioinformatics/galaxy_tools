@@ -1,0 +1,10 @@
+categories:
+- Sequence Analysis
+description: Adjust bracken report to account for unclassified reads
+homepage_url: https://github.com/public-health-bioinformatics/galaxy_tools/blob/master/tools/adjust_bracken_for_unclassified_reads
+long_description: |
+  Adjust bracken report to account for unclassified reads
+name: adjust_bracken_for_unclassified_reads
+owner: public-health-bioinformatics
+remote_repository_url: https://github.com/public-health-bioinformatics/galaxy_tools/blob/master/tools/adjust_bracken_for_unclassified_reads
+type: unrestricted
