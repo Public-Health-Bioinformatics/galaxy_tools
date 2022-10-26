@@ -1,0 +1,10 @@
+categories:
+  - Sequence Analysis
+description: 'Parse selected fields from tbprofiler json output to tabular format'
+long_description: |
+  Parse selected fields from tbprofiler json output to tabular format
+name: tbprofiler_json_to_tabular
+owner: public-health-bioinformatics
+remote_repository_url: https://github.com/public-health-bioinformatics/galaxy_tools/tree/master/tools/tbprofiler_json_to_tabular
+homepage_url: https://github.com/public-health-bioinformatics/galaxy_tools/tree/master/tools/tbprofiler_json_to_tabular
+type: unrestricted
