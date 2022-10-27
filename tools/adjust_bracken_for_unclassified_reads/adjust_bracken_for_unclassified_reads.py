@@ -43,7 +43,10 @@ def main(args):
     kraken_report = parse_kraken_report(args.kraken_report)
     bracken_abundances = parse_bracken_abundances(args.bracken_abundances)
 
-    kraken_report_unclassified_seqs = list(filter(lambda x: x['taxon_name'] == 'unclassified', kraken_report))[0]['seqs_this_level']
+    try:
+        kraken_report_unclassified_seqs = list(filter(lambda x: x['taxon_name'] == 'unclassified', kraken_report))[0]['seqs_this_level']
+    except IndexError as e:
+        kraken_report_unclassified_seqs = 0
     kraken_report_classified_seqs = list(filter(lambda x: x['taxon_name'] == 'root', kraken_report))[0]['seqs_total']
 
     total_seqs = kraken_report_classified_seqs + kraken_report_unclassified_seqs

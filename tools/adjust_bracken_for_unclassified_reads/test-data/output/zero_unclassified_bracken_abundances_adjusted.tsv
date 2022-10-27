@@ -1,0 +1,3 @@
+name	taxonomy_id	taxonomy_lvl	kraken_assigned_seqs	bracken_assigned_seqs	total_seqs	kraken_fraction_total_seqs	bracken_fraction_total_seqs
+unclassified	0	U	0	0	100	0.000000	0.000000
+Klebsiella pneumoniae	573	S	25	95	100	0.250000	0.950000
