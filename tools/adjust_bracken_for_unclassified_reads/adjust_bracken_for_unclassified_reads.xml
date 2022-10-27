@@ -1,4 +1,4 @@
-<tool id="adjust_bracken_for_unclassified_reads" name="Adjust Bracken Report for Unclassified Reads" version="0.1.0">
+<tool id="adjust_bracken_for_unclassified_reads" name="Adjust Bracken Report for Unclassified Reads" version="0.2.0+galaxy0">
     <description>Adjust bracken report to account for unclassified reads</description>
     <requirements>
     </requirements>
