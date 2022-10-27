@@ -47,19 +47,7 @@ def main(args):
     kraken_report_classified_seqs = list(filter(lambda x: x['taxon_name'] == 'root', kraken_report))[0]['seqs_total']
 
     total_seqs = kraken_report_classified_seqs + kraken_report_unclassified_seqs
-    percent_unclassified = float(kraken_report_unclassified_seqs) / float(total_seqs)
-
-    bracken_unclassified_entry = {
-        'name': 'unclassified',
-        'taxonomy_id': 0,
-        'taxonomy_lvl': 'U',
-        'kraken_assigned_seqs': kraken_report_unclassified_seqs,
-        'bracken_assigned_seqs': kraken_report_unclassified_seqs,
-        'kraken_fraction_total_seqs': percent_unclassified,
-        'bracken_fraction_total_seqs': 0.0,
-    }
-
-    bracken_abundances = [bracken_unclassified_entry] + bracken_abundances
+    fraction_unclassified = float(kraken_report_unclassified_seqs) / float(total_seqs)
 
     output_fieldnames = [
         'name',
@@ -82,7 +70,20 @@ def main(args):
         bracken_adjusted_fraction_total_seqs = float(b['bracken_assigned_seqs']) / float(total_seqs)
         b['bracken_fraction_total_seqs'] = '{:.6f}'.format(bracken_adjusted_fraction_total_seqs)
 
-    for b in sorted(bracken_abundances, key=lambda x: x['bracken_fraction_total_seqs'], reverse=True):
+    bracken_unclassified_entry = {
+        'name': 'unclassified',
+        'taxonomy_id': 0,
+        'taxonomy_lvl': 'U',
+        'kraken_assigned_seqs': kraken_report_unclassified_seqs,
+        'bracken_assigned_seqs': kraken_report_unclassified_seqs,
+        'total_seqs': total_seqs,
+        'kraken_fraction_total_seqs': '{:.6f}'.format(fraction_unclassified),
+        'bracken_fraction_total_seqs': '{:.6f}'.format(fraction_unclassified),
+    }
+    
+    bracken_abundances = sorted(bracken_abundances, key=lambda x: x['bracken_fraction_total_seqs'], reverse=True)
+    bracken_abundances = [bracken_unclassified_entry] + bracken_abundances
+    for b in bracken_abundances:
         writer.writerow(b)
 
 

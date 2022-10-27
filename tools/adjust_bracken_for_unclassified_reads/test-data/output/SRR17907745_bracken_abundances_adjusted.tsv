@@ -1,9 +1,9 @@
 name	taxonomy_id	taxonomy_lvl	kraken_assigned_seqs	bracken_assigned_seqs	total_seqs	kraken_fraction_total_seqs	bracken_fraction_total_seqs
+unclassified	0	U	110613	110613	2570868	0.043026	0.043026
 Klebsiella quasipneumoniae	1463165	S	484958	1017029	2570868	0.188636	0.395598
 Escherichia coli	562	S	181539	751229	2570868	0.070614	0.292208
 Klebsiella pneumoniae	573	S	94362	315713	2570868	0.036704	0.122804
 Citrobacter freundii	546	S	116592	132960	2570868	0.045351	0.051718
-unclassified	0	U	110613	110613	2570868	0.043026	0.043026
 Enterobacter hormaechei	158836	S	74706	85010	2570868	0.029059	0.033067
 Enterobacter cloacae	550	S	73130	79124	2570868	0.028446	0.030777
 Klebsiella variicola	244366	S	4879	10752	2570868	0.001898	0.004182
