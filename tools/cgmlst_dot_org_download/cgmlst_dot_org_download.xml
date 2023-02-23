@@ -1,0 +1,49 @@
+<tool id="cgmlst_dot_org_download" name="cgMLST.org download" version="0.1.0">
+    <description>Download schemes from cgMLST.org</description>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        '$__tool_directory__/cgmlst_dot_org_download.py'
+          --scheme-id ${scheme_id}
+    ]]></command>
+    <inputs>
+      <param argument="--scheme-id" type="select" label="cgMLST.org Scheme" help="Select a cgMLST scheme">
+        <option value="3956907">Acinetobacter baumannii</option>
+        <option value="19008694">Bacillus anthracis</option>
+        <option value="6398355">Brucella melitensis</option>
+        <option value="24062474">Brucella spp.</option>
+        <option value="23721348">Burkholderia mallei (FLI)</option>
+        <option value="23643739">Burkholderia mallei (RKI)</option>
+        <option value="18876117">Burkholderia pseudomallei</option>
+        <option value="145039">Campylobacter jejuni/coli</option>
+        <option value="12556067">Clostridioides difficile</option>
+        <option value="15017225">Clostridium perfringens</option>
+        <option value="3887469">Enterococcus faecalis</option>
+        <option value="991893">Enterococcus faecium</option>
+        <option value="5064703">Escherichia coli</option>
+        <option value="260204">Francisella tularensis</option>
+        <option value="2187931">Klebsiella pneumoniae/variicola/quasipneumoniae</option>
+        <option value="1025099">Legionella pneumophila</option>
+        <option value="690488">Listeria monocytogenes</option>
+        <option value="741110">Mycobacterium tuberculosis/bovis/africanum/canettii</option>
+        <option value="22602285">Mycobacteroides abscessus</option>
+        <option value="6402012">Mycoplasma gallisepticum</option>
+        <option value="17414003">Paenibacillus larvae</option>
+        <option value="16115339">Pseudomonas aeruginosa</option>
+        <option value="8896773">STEC</option>
+        <option value="4792159">Salmonella enterica</option>
+        <option value="24616475">Serratia marcescens</option>
+        <option value="141106">Staphylococcus aureus</option>
+        <option value="26824796">Staphylococcus capitis</option>
+      </param>
+    </inputs>
+    <outputs>
+        <data name="scheme/scheme.fa" label="scheme" format="fasta"/>
+    </outputs>
+    <tests>
+    </tests>
+    <help><![CDATA[
+    ]]></help>
+    <citations>
+    </citations>
+</tool>
