@@ -5,6 +5,7 @@
     <command detect_errors="exit_code"><![CDATA[
         '$__tool_directory__/cgmlst_dot_org_download.py'
           --scheme-id ${scheme_id}
+          --outdir .
     ]]></command>
     <inputs>
       <param argument="--scheme-id" type="select" label="cgMLST.org Scheme" help="Select a cgMLST scheme">
@@ -38,7 +39,7 @@
       </param>
     </inputs>
     <outputs>
-        <data name="scheme/scheme.fa" label="scheme" format="fasta"/>
+        <data name="scheme" label="scheme" format="fasta" from_work_dir="scheme.fa"/>
     </outputs>
     <tests>
     </tests>

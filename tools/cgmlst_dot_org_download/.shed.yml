@@ -1,0 +1,10 @@
+categories:
+  - Sequence Analysis
+description: 'Download schemes from cgMLST.org'
+long_description: |
+  Download schemes from cgMLST.org
+name: cgmlst_dot_org_download
+owner: public-health-bioinformatics
+remote_repository_url: https://github.com/public-health-bioinformatics/galaxy_tools/tree/master/tools/cgmlst_dot_org_download
+homepage_url: https://github.com/public-health-bioinformatics/galaxy_tools/tree/master/tools/cgmlst_dot_org_download
+type: unrestricted

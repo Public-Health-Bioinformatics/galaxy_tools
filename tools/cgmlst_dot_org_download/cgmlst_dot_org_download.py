@@ -10,7 +10,6 @@ import urllib.request
 
 from zipfile import ZipFile
 
-
 def get(url):
     response_content = None
     request = urllib.request.Request(url)
