@@ -1,0 +1,41 @@
+<tool id="tbprofiler_json_to_tabular" name="Convert tbprofiler json report to tabular" version="0.1.0+galaxy2">
+    <description>Convert tbprofiler json report to tabular</description>
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        '$__tool_directory__/tbprofiler_json_to_tabular.py'
+          ${report}
+          --qc ${qc}
+          --gene-coverage ${gene_coverage}
+          --missing-positions ${missing_positions}
+          --resistance-variants ${resistance_variants}
+          --other-variants ${other_variants}
+          --analysis-metadata ${analysis_metadata}
+    ]]></command>
+    <inputs>
+      <param name="report" type="data" format="json" />
+    </inputs>
+    <outputs>
+      <data name="qc" label="QC" format="tabular"/>
+      <data name="gene_coverage" label="Gene Coverage" format="tabular"/>
+      <data name="missing_positions" label="Missing positions" format="tabular"/>
+      <data name="resistance_variants" label="Resistance variants" format="tabular"/>
+      <data name="other_variants" label="Other variants" format="tabular"/>
+      <data name="analysis_metadata" label="Analysis metadata" format="tabular"/>
+    </outputs>
+    <tests>
+      <test>
+        <param name="report" value="test-01_tbprofiler.json" />
+        <output name="qc" file="test-01_qc.tsv" ftype="tabular" />
+        <output name="gene_coverage" file="test-01_gene_coverage.tsv" ftype="tabular" />
+        <output name="missing_positions" file="test-01_missing_positions.tsv" ftype="tabular" />
+        <output name="resistance_variants" file="test-01_resistance_variants.tsv" ftype="tabular" />
+        <output name="other_variants" file="test-01_other_variants.tsv" ftype="tabular" />
+        <output name="analysis_metadata" file="test-01_analysis_metadata.tsv" ftype="tabular" />
+      </test>
+    </tests>
+    <help><![CDATA[
+    ]]></help>
+    <citations>
+    </citations>
+</tool>

@@ -1,0 +1,3 @@
+chrom	genome_pos	locus_tag	feature_id	gene	type	ref	alt	freq	nucleotide_change	protein_change	change	drugs
+Chromosome	761155	Rv0667	CCP43410	rpoB	missense_variant	C	T	1.0	c.1349C>T	p.Ser450Leu	p.Ser450Leu	rifampicin:resistance
+Chromosome	1674048	Rv1484	CCP44244	inhA	upstream_gene_variant	G	A	1.0	c.-154G>A		c.-154G>A	isoniazid:resistance, ethionamide:resistance
