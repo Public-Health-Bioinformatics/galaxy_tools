@@ -1,0 +1,14 @@
+chrom	genome_pos	locus_tag	feature_id	gene	type	ref	alt	freq	nucleotide_change	protein_change	change	gene_associated_drugs
+Chromosome	7362	Rv0006	CCP42728	gyrA	missense_variant	G	C	1.0	c.61G>C	p.Glu21Gln	p.Glu21Gln	levofloxacin, ciprofloxacin, ofloxacin, moxifloxacin, fluoroquinolones
+Chromosome	7585	Rv0006	CCP42728	gyrA	missense_variant	G	C	1.0	c.284G>C	p.Ser95Thr	p.Ser95Thr	levofloxacin, ciprofloxacin, ofloxacin, moxifloxacin, fluoroquinolones
+Chromosome	7892	Rv0006	CCP42728	gyrA	synonymous_variant	G	A	1.0	c.591G>A	p.Leu197Leu	c.591G>A	levofloxacin, ciprofloxacin, ofloxacin, moxifloxacin, fluoroquinolones
+Chromosome	9304	Rv0006	CCP42728	gyrA	missense_variant	G	A	1.0	c.2003G>A	p.Gly668Asp	p.Gly668Asp	levofloxacin, ciprofloxacin, ofloxacin, moxifloxacin, fluoroquinolones
+Chromosome	766789	Rv0668	CCP43411	rpoC	synonymous_variant	G	A	1.0	c.3420G>A	p.Glu1140Glu	c.3420G>A	rifampicin
+Chromosome	781395	Rv0682	CCP43425	rpsL	upstream_gene_variant	T	C	1.0	c.-165T>C		c.-165T>C	streptomycin
+Chromosome	1305494	Rv1173	CCP43929	fbiC	frameshift_variant&stop_lost&splice_region_variant	CGGCCTAGCCCCGGCGACGATGCCGGGTCGCGGGATGCGGCCCGTTGAGGAGCGGGGCAATCT	C	0.21739130434782608	c.2565_*55delGGCCTAGCCCCGGCGACGATGCCGGGTCGCGGGATGCGGCCCGTTGAGGAGCGGGGCAATCT	p.Ala855fs	c.2565_*55delGGCCTAGCCCCGGCGACGATGCCGGGTCGCGGGATGCGGCCCGTTGAGGAGCGGGGCAATCT	delamanid
+Chromosome	1460976	Rv1305	CCP44062	atpE	upstream_gene_variant	C	T	1.0	c.-69C>T		c.-69C>T	bedaquiline
+Chromosome	1471659	EBG00000313325	EBG00000313325-1	rrs	upstream_gene_variant	C	T	1.0	n.-187C>T		n.-187C>T	aminoglycosides, streptomycin, amikacin, capreomycin, kanamycin
+Chromosome	1917972	Rv1694	CCP44459	tlyA	synonymous_variant	A	G	1.0	c.33A>G	p.Leu11Leu	c.33A>G	capreomycin
+Chromosome	3073868	Rv2764c	CCP45563	thyA	missense_variant	T	C	1.0	c.604A>G	p.Thr202Ala	p.Thr202Ala	para-aminosalicylic_acid
+Chromosome	4242643	Rv3794	CCP46623	embA	upstream_gene_variant	C	T	1.0	c.-590C>T		c.-590C>T	ethambutol
+Chromosome	1305494	Rv1173	CCP43929	fbiC	frameshift_variant&stop_lost&splice_region_variant	C	<DEL>	1.0	c.2565_*56delCNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN	p.Ala855fs	c.2565_*56delCNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN	delamanid

@@ -1,0 +1,635 @@
+{
+    "qc": {
+        "pct_reads_mapped": 99.47,
+        "num_reads_mapped": 1731409,
+        "median_coverage": 84,
+        "gene_coverage": [
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv0005",
+                "gene": "gyrB"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv0006",
+                "gene": "gyrA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv0407",
+                "gene": "fgd1"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv0486",
+                "gene": "mshA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv0667",
+                "gene": "rpoB"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv0668",
+                "gene": "rpoC"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv0678",
+                "gene": "mmpR5"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv0682",
+                "gene": "rpsL"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv0701",
+                "gene": "rplC"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv1173",
+                "gene": "fbiC"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv1267c",
+                "gene": "embR"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv1305",
+                "gene": "atpE"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "EBG00000313325",
+                "gene": "rrs"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "EBG00000313339",
+                "gene": "rrl"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv1483",
+                "gene": "fabG1"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv1484",
+                "gene": "inhA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv1630",
+                "gene": "rpsA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv1694",
+                "gene": "tlyA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv1908c",
+                "gene": "katG"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv2043c",
+                "gene": "pncA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv2245",
+                "gene": "kasA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv2416c",
+                "gene": "eis"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv2428",
+                "gene": "ahpC"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv2447c",
+                "gene": "folC"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv2535c",
+                "gene": "pepQ"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv2671",
+                "gene": "ribD"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv2754c",
+                "gene": "thyX"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv2764c",
+                "gene": "thyA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv2780",
+                "gene": "ald"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv2983",
+                "gene": "fbiD"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3261",
+                "gene": "fbiA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3262",
+                "gene": "fbiB"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3423c",
+                "gene": "alr"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3547",
+                "gene": "ddn"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3601c",
+                "gene": "panD"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3793",
+                "gene": "embC"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3794",
+                "gene": "embA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3795",
+                "gene": "embB"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3806c",
+                "gene": "ubiA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3854c",
+                "gene": "ethA"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3855",
+                "gene": "ethR"
+            },
+            {
+                "fraction": 0.0,
+                "cutoff": 0,
+                "locus_tag": "Rv3919c",
+                "gene": "gid"
+            }
+        ],
+        "missing_positions": []
+    },
+    "delly": "success",
+    "lineage": [
+        {
+            "lin": "lineage4",
+            "family": "Euro-American",
+            "spoligotype": "LAM;T;S;X;H",
+            "rd": "None",
+            "frac": 1.0
+        },
+        {
+            "lin": "lineage4.5",
+            "family": "Euro-American",
+            "spoligotype": "H;T",
+            "rd": "RD122",
+            "frac": 1.0
+        }
+    ],
+    "main_lin": "lineage4",
+    "sublin": "lineage4.5",
+    "dr_variants": [
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 761155,
+            "ref": "C",
+            "alt": "T",
+            "freq": 1.0,
+            "feature_id": "CCP43410",
+            "type": "missense_variant",
+            "nucleotide_change": "c.1349C>T",
+            "protein_change": "p.Ser450Leu",
+            "annotation": [
+                {
+                    "type": "resistance_association_confidence",
+                    "drug": "rifampicin",
+                    "confidence": "high"
+                }
+            ],
+            "alternate_consequences": [],
+            "change": "p.Ser450Leu",
+            "locus_tag": "Rv0667",
+            "gene": "rpoB",
+            "drugs": [
+                {
+                    "type": "drug",
+                    "drug": "rifampicin",
+                    "confers": "resistance",
+                    "literature": "10.1128/AAC.01093-18"
+                }
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 1674048,
+            "ref": "G",
+            "alt": "A",
+            "freq": 1.0,
+            "feature_id": "CCP44244",
+            "type": "upstream_gene_variant",
+            "nucleotide_change": "c.-154G>A",
+            "protein_change": "",
+            "annotation": [],
+            "alternate_consequences": [],
+            "change": "c.-154G>A",
+            "locus_tag": "Rv1484",
+            "gene": "inhA",
+            "drugs": [
+                {
+                    "type": "drug",
+                    "drug": "isoniazid",
+                    "confers": "resistance",
+                    "literature": "https://www.who.int/publications/i/item/9789240028173"
+                },
+                {
+                    "type": "drug",
+                    "drug": "ethionamide",
+                    "confers": "resistance",
+                    "literature": "https://www.who.int/publications/i/item/9789240028173"
+                }
+            ]
+        }
+    ],
+    "other_variants": [
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 7362,
+            "ref": "G",
+            "alt": "C",
+            "freq": 1.0,
+            "feature_id": "CCP42728",
+            "type": "missense_variant",
+            "nucleotide_change": "c.61G>C",
+            "protein_change": "p.Glu21Gln",
+            "alternate_consequences": [],
+            "change": "p.Glu21Gln",
+            "locus_tag": "Rv0006",
+            "gene": "gyrA",
+            "gene_associated_drugs": [
+                "levofloxacin",
+                "ciprofloxacin",
+                "ofloxacin",
+                "moxifloxacin",
+                "fluoroquinolones"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 7585,
+            "ref": "G",
+            "alt": "C",
+            "freq": 1.0,
+            "feature_id": "CCP42728",
+            "type": "missense_variant",
+            "nucleotide_change": "c.284G>C",
+            "protein_change": "p.Ser95Thr",
+            "annotation": [
+                {
+                    "type": "phylogenetic_mutation",
+                    "lineage": "lineage4"
+                }
+            ],
+            "alternate_consequences": [],
+            "change": "p.Ser95Thr",
+            "locus_tag": "Rv0006",
+            "gene": "gyrA",
+            "gene_associated_drugs": [
+                "levofloxacin",
+                "ciprofloxacin",
+                "ofloxacin",
+                "moxifloxacin",
+                "fluoroquinolones"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 7892,
+            "ref": "G",
+            "alt": "A",
+            "freq": 1.0,
+            "feature_id": "CCP42728",
+            "type": "synonymous_variant",
+            "nucleotide_change": "c.591G>A",
+            "protein_change": "p.Leu197Leu",
+            "alternate_consequences": [],
+            "change": "c.591G>A",
+            "locus_tag": "Rv0006",
+            "gene": "gyrA",
+            "gene_associated_drugs": [
+                "levofloxacin",
+                "ciprofloxacin",
+                "ofloxacin",
+                "moxifloxacin",
+                "fluoroquinolones"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 9304,
+            "ref": "G",
+            "alt": "A",
+            "freq": 1.0,
+            "feature_id": "CCP42728",
+            "type": "missense_variant",
+            "nucleotide_change": "c.2003G>A",
+            "protein_change": "p.Gly668Asp",
+            "alternate_consequences": [],
+            "change": "p.Gly668Asp",
+            "locus_tag": "Rv0006",
+            "gene": "gyrA",
+            "gene_associated_drugs": [
+                "levofloxacin",
+                "ciprofloxacin",
+                "ofloxacin",
+                "moxifloxacin",
+                "fluoroquinolones"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 766789,
+            "ref": "G",
+            "alt": "A",
+            "freq": 1.0,
+            "feature_id": "CCP43411",
+            "type": "synonymous_variant",
+            "nucleotide_change": "c.3420G>A",
+            "protein_change": "p.Glu1140Glu",
+            "alternate_consequences": [],
+            "change": "c.3420G>A",
+            "locus_tag": "Rv0668",
+            "gene": "rpoC",
+            "gene_associated_drugs": [
+                "rifampicin"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 781395,
+            "ref": "T",
+            "alt": "C",
+            "freq": 1.0,
+            "feature_id": "CCP43425",
+            "type": "upstream_gene_variant",
+            "nucleotide_change": "c.-165T>C",
+            "protein_change": "",
+            "alternate_consequences": [],
+            "change": "c.-165T>C",
+            "locus_tag": "Rv0682",
+            "gene": "rpsL",
+            "gene_associated_drugs": [
+                "streptomycin"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 1305494,
+            "ref": "CGGCCTAGCCCCGGCGACGATGCCGGGTCGCGGGATGCGGCCCGTTGAGGAGCGGGGCAATCT",
+            "alt": "C",
+            "freq": 0.21739130434782608,
+            "feature_id": "CCP43929",
+            "type": "frameshift_variant&stop_lost&splice_region_variant",
+            "nucleotide_change": "c.2565_*55delGGCCTAGCCCCGGCGACGATGCCGGGTCGCGGGATGCGGCCCGTTGAGGAGCGGGGCAATCT",
+            "protein_change": "p.Ala855fs",
+            "alternate_consequences": [],
+            "change": "c.2565_*55delGGCCTAGCCCCGGCGACGATGCCGGGTCGCGGGATGCGGCCCGTTGAGGAGCGGGGCAATCT",
+            "locus_tag": "Rv1173",
+            "gene": "fbiC",
+            "gene_associated_drugs": [
+                "delamanid"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 1460976,
+            "ref": "C",
+            "alt": "T",
+            "freq": 1.0,
+            "feature_id": "CCP44062",
+            "type": "upstream_gene_variant",
+            "nucleotide_change": "c.-69C>T",
+            "protein_change": "",
+            "alternate_consequences": [],
+            "change": "c.-69C>T",
+            "locus_tag": "Rv1305",
+            "gene": "atpE",
+            "gene_associated_drugs": [
+                "bedaquiline"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 1471659,
+            "ref": "C",
+            "alt": "T",
+            "freq": 1.0,
+            "feature_id": "EBG00000313325-1",
+            "type": "upstream_gene_variant",
+            "nucleotide_change": "n.-187C>T",
+            "protein_change": "",
+            "alternate_consequences": [],
+            "change": "n.-187C>T",
+            "locus_tag": "EBG00000313325",
+            "gene": "rrs",
+            "gene_associated_drugs": [
+                "aminoglycosides",
+                "streptomycin",
+                "amikacin",
+                "capreomycin",
+                "kanamycin"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 1917972,
+            "ref": "A",
+            "alt": "G",
+            "freq": 1.0,
+            "feature_id": "CCP44459",
+            "type": "synonymous_variant",
+            "nucleotide_change": "c.33A>G",
+            "protein_change": "p.Leu11Leu",
+            "alternate_consequences": [],
+            "change": "c.33A>G",
+            "locus_tag": "Rv1694",
+            "gene": "tlyA",
+            "gene_associated_drugs": [
+                "capreomycin"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 3073868,
+            "ref": "T",
+            "alt": "C",
+            "freq": 1.0,
+            "feature_id": "CCP45563",
+            "type": "missense_variant",
+            "nucleotide_change": "c.604A>G",
+            "protein_change": "p.Thr202Ala",
+            "alternate_consequences": [],
+            "change": "p.Thr202Ala",
+            "locus_tag": "Rv2764c",
+            "gene": "thyA",
+            "gene_associated_drugs": [
+                "para-aminosalicylic_acid"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 4242643,
+            "ref": "C",
+            "alt": "T",
+            "freq": 1.0,
+            "feature_id": "CCP46623",
+            "type": "upstream_gene_variant",
+            "nucleotide_change": "c.-590C>T",
+            "protein_change": "",
+            "alternate_consequences": [
+                {
+                    "gene_name": "embC",
+                    "gene_id": "Rv3793",
+                    "feature_id": "CCP46622",
+                    "type": "synonymous_variant",
+                    "nucleotide_change": "c.2781C>T",
+                    "protein_change": "p.Arg927Arg"
+                }
+            ],
+            "change": "c.-590C>T",
+            "locus_tag": "Rv3794",
+            "gene": "embA",
+            "gene_associated_drugs": [
+                "ethambutol"
+            ]
+        },
+        {
+            "chrom": "Chromosome",
+            "genome_pos": 1305494,
+            "ref": "C",
+            "alt": "<DEL>",
+            "freq": 1.0,
+            "feature_id": "CCP43929",
+            "type": "frameshift_variant&stop_lost&splice_region_variant",
+            "nucleotide_change": "c.2565_*56delCNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+            "protein_change": "p.Ala855fs",
+            "alternate_consequences": [],
+            "change": "c.2565_*56delCNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+            "locus_tag": "Rv1173",
+            "gene": "fbiC",
+            "gene_associated_drugs": [
+                "delamanid"
+            ]
+        }
+    ],
+    "drtype": "MDR-TB",
+    "db_version": {
+        "name": "tbdb",
+        "commit": "7fc199d",
+        "Merge": "bad550a 277d053",
+        "Author": "Jody Phelan <jody.phelan@lshtm.ac.uk>",
+        "Date": "Tue Jan 25 17:21:48 2022 +0000"
+    },
+    "id": "tbprofiler",
+    "tbprofiler_version": "4.1.1",
+    "pipeline": [
+        {
+            "Analysis": "Mapping",
+            "Program": "bwa"
+        },
+        {
+            "Analysis": "Variant calling",
+            "Program": "freebayes"
+        }
+    ],
+    "timestamp": "22-10-2022 01:09:50"
+}
